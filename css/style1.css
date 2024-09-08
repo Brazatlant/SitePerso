@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #f4f4f4; /* Fond général clair */
+  color: #333; /* Couleur du texte en mode clair */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Styles pour le mode sombre */
+body.dark-mode {
+  background-color: #1f2123; /* Fond général sombre */
+  color: #a770eb; /* Couleur du texte en mode sombre */
+}
+
+header {
+  background: #4A148C;
+}
+
+header.dark-mode {
+  background-color: #333; /* Fond de l'en-tête en mode sombre */
+}
+
+.menu {
+  padding: 20px;
+}
+
+.menu.dark-mode {
+  background-color: #333; /* Fond du menu en mode sombre */
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.menu li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.menu a {
+  font-size: 22px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff; /* Couleur du texte en mode clair */
+  display: block;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s;
+}
+
+.menu.dark-mode a {
+  color: #a770eb; /* Couleur du texte en violet en mode sombre */
+}
+
+/* Animation des liens du menu */
+.menu a::before {
+  content: "";
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  transition: 0.5s transform ease;
+  transform: scale3d(0, 1, 1);
+  transform-origin: 0 50%;
+}
+
+.menu a:hover::before {
+  transform: scale3d(1, 1, 1);
+}
+
+/* Couleurs des animations spécifiques à chaque section de menu */
+.menu-1 a::before {
+  background: #E91E63;
+}
+
+.menu-2 a::before {
+  background: #EC407A;
+}
+
+.menu-3 a::before {
+  background: #F06292;
+}
+
+.menu-4 a::before {
+  background: #EC407A;
+}
+
+.menu-5 a::before {
+  background: #E91E63;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropbtn {
+  cursor: pointer;
+  color: #fff; /* Couleur du texte du bouton en mode clair */
+}
+
+.menu.dark-mode .dropbtn {
+  color: #a770eb; /* Couleur du texte du bouton en violet en mode sombre */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #4A148C;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #fff; /* Couleur du texte des liens en mode clair */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.menu.dark-mode .dropdown-content a {
+  color: #a770eb; /* Couleur du texte des liens en violet en mode sombre */
+}
+
+.dropdown-content a:hover {
+  background-color: #6A1B9A;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.content {
+  padding: 20px;
+  background: #fff; /* Fond spécifique à la section en clair */
+  text-align: center;
+}
+
+.content h1 {
+  color: #4A148C;
+  margin-bottom: 20px;
+}
+
+.content p {
+  color: #333;
+}
+
+body.dark-mode .content {
+  background: #1f2123; /* Fond spécifique à la section en sombre */
+}
+
+body.dark-mode .content h1 {
+  color: #a770eb; /* Couleur des titres en violet en mode sombre */
+}
+
+body.dark-mode .content p {
+  color: #a770eb; /* Couleur du texte en violet en mode sombre */
+}
+
+.menu-icon {
+  width: 24px; /* Ajustez la largeur de l'icône */
+  height: auto; /* La hauteur sera ajustée proportionnellement */
+}
+
+#toggle-theme {
+  background: transparent;
+  border: none;
+  color: #a770eb; /* Couleur de l'icône du bouton */
+  font-size: 24px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
