@@ -1,132 +1,45 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <title>Site Perso</title>
-</head>
-<body>
-    <header>
-        <nav class="menu">
-            <ul>
-                <li class="menu-1">
-                    <a href="index.html">
-                        <img src="img/home-icon.png" alt="Home" class="menu-icon">
-                    </a>
-                </li>
-                <li class="dropdown menu-2">
-                    <a href="#" class="dropbtn">Thèmes</a>
-                    <div class="dropdown-content">
-                        <a href="page1.html">Phishing</a>
-                        <a href="page2.html">Page 2</a>
-                    </div>
-                </li>
-                <li class="menu-4"><a href="liens.html">Liens</a></li>
-                <li class="menu-3"><a href="contact.html">Contact</a></li>
-                <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
-                <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h1>Bienvenue dans le monde de la Cybersécurité</h1>
-            <p>La cybersécurité est essentielle pour protéger les informations sensibles et prévenir les cyberattaques.</p>
-            <ul>
-                <li>Protection des données</li>
-                <li>Prévention des cyberattaques</li>
-                <li>Gestion des incidents</li>
-            </ul>
-        </section>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="contact-form.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Contact</h1>
+      <form action="https://formsubmit.co/jesuisdanstacave@gmail.com" method="POST">
 
-        <section>
-            <h2>Menaces et Solutions</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Menace</th>
-                        <th>Description</th>
-                        <th>Solution</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Phishing</td>
-                        <td>Obtention de données sensibles par tromperie.</td>
-                        <td>Filtres anti-phishing, vérification des e-mails.</td>
-                    </tr>
-                    <tr>
-                        <td>Malware</td>
-                        <td>Logiciels malveillants visant à endommager les systèmes.</td>
-                        <td>Antivirus, mises à jour régulières.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <div class="txt_field">
+          <input type="text" name="name" id="name" required>
+          <span></span>
+          <label>Full Name</label>
+        </div>
 
-        <section>
-            <h2>Galerie de Cybersécurité</h2>
-            <div id="carouselExampleCaptions" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/phishing.png" class="d-block w-100" alt="Cybersecurity Image 1" height="250px">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Image 1</h5>
-                            <p>Description de l'image 1.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/cybersecurity2.jpg" class="d-block w-100" alt="Cybersecurity Image 2">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Image 2</h5>
-                            <p>Description de l'image 2.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
-    </main>
-</body>
+        <div class="txt_field">
+            <input type="text" name="email" id="email" required>
+            <span></span>
+            <label>Email</label>
+        </div>
+
+        <div class="txt_field">
+          <input type="text" name="message" id="message" required>
+          <span></span>
+          <label>Message</label>
+        </div>
+
+        <div class="pass">
+            <input class="pass" type="reset" value="Reset">
+        </div>
+
+        <input type="submit" value="Submit">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="homePage_link">
+        <a href="#">Back to Home page</a>
+        </div>
+
+      </form>
+    </div>
+  </body>
 </html>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggleButton = document.getElementById('toggle-theme');
-      const darkModeClass = 'dark-mode';
-
-      // Appliquer le thème en fonction de la préférence stockée
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add(darkModeClass);
-        toggleButton.textContent = '🌞';
-      } else {
-        toggleButton.textContent = '🌙';
-      }
-
-      // Fonction pour basculer le thème
-      function toggleTheme() {
-        document.body.classList.toggle(darkModeClass);
-        if (document.body.classList.contains(darkModeClass)) {
-          localStorage.setItem('theme', 'dark');
-          toggleButton.textContent = '🌞';
-        } else {
-          localStorage.setItem('theme', 'light');
-          toggleButton.textContent = '🌙';
-        }
-      }
-
-      // Événement de clic pour changer le thème
-      toggleButton.addEventListener('click', toggleTheme);
-    });
-</script>

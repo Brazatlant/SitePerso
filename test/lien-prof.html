@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/lien-prof.css">
+    <title>Liens Prof</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li class="menu-1">
+                    <a href="index.html">
+                        <img src="img/home-icon.png" alt="Home" class="menu-icon">
+                    </a>
+                </li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">Thèmes</a>
+                    <div class="dropdown-content">
+                        <a href="page1.html">Page 1</a>
+                        <a href="page2.html">Page 2</a>
+                    </div>
+                </li>
+                <li class="menu-4"><a href="liens.html">Liens</a></li>
+                <li class="menu-3"><a href="contact.html">Contact</a></li>
+                <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
+            </ul>
+        </nav>
+        <button id="toggle-theme" aria-label="Toggle Dark Mode">🌙</button>
+    </header>
+    <main>
+        <h1>Liens Prof</h1>
+        <div class="image-links">
+            <div class="image-link">
+                <span class="image-title">Mr Lartillot</span>
+                <a href="http://lartillotinfo.free.fr/" target="_blank">
+                    <img src="img/free.png" alt="Site 1">
+                </a>
+            </div>
+            <div class="image-link">
+                <span class="image-title">Mr Duhalde</span>
+                <a href="https://aduhalde.fr/" target="_blank">
+                    <img src="img/duhalde.png" alt="Site 2">
+                </a>
+            </div>
+            <div class="image-link">
+                <span class="image-title">Math</span>
+                <a href="https://www.monlyceenumerique.fr/index_ciel.html#ciel1" target="_blank">
+                    <img src="img/Math.png" alt="Site 3">
+                </a>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('toggle-theme');
+
+            // Vérifie le thème stocké dans le localStorage
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                toggleButton.textContent = '🌞'; // Icône du mode clair
+            }
+
+            toggleButton.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                    toggleButton.textContent = '🌞'; // Icône du mode clair
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    toggleButton.textContent = '🌙'; // Icône du mode sombre
+                }
+            });
+        });
+    </script>
+</body>
+</html>
