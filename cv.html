@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cv.css">
     <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <title>Site Perso</title>
+    <title>CV HARDCORE🔥</title>
 </head>
 <body>
     <header>
@@ -46,14 +46,23 @@
             </ul>
         </nav>
     </header>
-
-    <audio autoplay loop>
+    <h1>Pierre<br>Ancelin</h1>
+    <audio id="background-audio" autoplay muted loop>
         <source src="img/USA.mp3" type="audio/mpeg">
     </audio>
     <img class="Moi" src="img/Cv_Spin.gif" alt="">
     <img class="firework" src="https://img.clipart-library.com/2/clip-transparent-fireworks-gif/clip-transparent-fireworks-gif-2.gif">
-    <img class="biker" src="https://media1.tenor.com/m/xFYrDGPvOTIAAAAC/america-flag.gif" width="450px">
+    <a href="#" id="biker-audio-trigger">
+        <img class="biker" src="https://media1.tenor.com/m/xFYrDGPvOTIAAAAC/america-flag.gif" width="450px" alt="Biker">
+    </a>
+    <audio id="biker-audio" src="img/WTFKM.ogg" preload="auto"></audio>
+    <audio id="biker-audio" src="img/Allumer le feu.mp3" preload="auto"></audio>
+    
+    <a href="#" id="johnny-audio-trigger">
     <img class="johnny" src="https://img.over-blog-kiwi.com/0/94/61/80/20180127/ob_f59a18_johnny-hallyday-allumer-le-feu-gif-ani.gif" width="350px">
+    </a>    
+    <audio id="johnny-audio" src="img/Allumer le feu.mp3" preload="auto"></audio>
+
     <img class="fireworkd" src="https://img.clipart-library.com/2/clip-transparent-fireworks-gif/clip-transparent-fireworks-gif-2.gif">
     <img class="flame" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="" width="1900" height="450" style="transform: scaleY(0.7);">
     
@@ -62,31 +71,83 @@
 </html>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggleButton = document.getElementById('toggle-theme');
-      const darkModeClass = 'dark-mode';
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('toggle-theme');
+    const darkModeClass = 'dark-mode';
 
-      // Appliquer le thème en fonction de la préférence stockée
-      if (localStorage.getItem('theme') === 'dark') {
+    // Appliquer le thème en fonction de la préférence stockée
+    if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add(darkModeClass);
         toggleButton.textContent = '🌞';
-      } else {
+    } else {
         toggleButton.textContent = '🌙';
-      }
+    }
 
-      // Fonction pour basculer le thème
-      function toggleTheme() {
+    // Fonction pour basculer le thème
+    function toggleTheme() {
         document.body.classList.toggle(darkModeClass);
         if (document.body.classList.contains(darkModeClass)) {
-          localStorage.setItem('theme', 'dark');
-          toggleButton.textContent = '🌞';
+            localStorage.setItem('theme', 'dark');
+            toggleButton.textContent = '🌞';
         } else {
-          localStorage.setItem('theme', 'light');
-          toggleButton.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+            toggleButton.textContent = '🌙';
         }
-      }
+    }
 
-      // Événement de clic pour changer le thème
-      toggleButton.addEventListener('click', toggleTheme);
+    // Événement de clic pour changer le thème
+    toggleButton.addEventListener('click', toggleTheme);
+
+    // Gestion des sons (musique de fond, biker et Johnny)
+    const bikerAudioTrigger = document.getElementById('biker-audio-trigger');
+    const bikerAudio = document.getElementById('biker-audio');
+    const backgroundAudio = document.getElementById('background-audio');
+    const johnnyAudioTrigger = document.getElementById('johnny-audio-trigger');
+    const johnnyAudio = document.getElementById('johnny-audio');
+
+    function stopAllMusic() {
+        bikerAudio.pause();
+        bikerAudio.currentTime = 0; // Remet la musique du biker au début
+        johnnyAudio.pause();
+        johnnyAudio.currentTime = 0; // Remet la musique de Johnny au début
+        backgroundAudio.pause();
+    }
+
+    // Gestion du clic sur l'image du biker
+    bikerAudioTrigger.addEventListener('click', (e) => {
+        e.preventDefault(); // Empêche l'action par défaut du lien
+
+        if (bikerAudio.paused) {
+            stopAllMusic();  // Arrête toutes les autres musiques
+            bikerAudio.play(); // Joue la musique du biker
+        } else {
+            bikerAudio.pause(); // Met en pause la musique du biker
+            backgroundAudio.play(); // Relance la musique de fond
+        }
     });
+
+    // Gestion du clic sur l'image de Johnny
+    johnnyAudioTrigger.addEventListener('click', (e) => {
+        e.preventDefault(); // Empêche l'action par défaut du lien
+
+        if (johnnyAudio.paused) {
+            stopAllMusic();  // Arrête toutes les autres musiques
+            johnnyAudio.play(); // Joue la musique de Johnny
+        } else {
+            johnnyAudio.pause(); // Met en pause la musique de Johnny
+            backgroundAudio.play(); // Relance la musique de fond
+        }
+    });
+
+    // Lorsque la musique du biker se termine, relancer la musique de fond
+    bikerAudio.addEventListener('ended', () => {
+        backgroundAudio.play();
+    });
+
+    // Lorsque la musique de Johnny se termine, relancer la musique de fond
+    johnnyAudio.addEventListener('ended', () => {
+        backgroundAudio.play();
+    });
+});
+
 </script>
