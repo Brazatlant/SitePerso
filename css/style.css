@@ -166,3 +166,41 @@ th {
   background-color: #4A148C;
   color: #fff;
 }
+
+/* Positionnement de la flamme sous le lien */
+.flame-container {
+  position: relative;
+  display: inline-block;
+}
+
+.flame-gif {
+  position: absolute;
+  align-items: left;
+  left: -10px;
+  transform: translateX(-50%);
+  bottom: -13px ; /* Ajuste la hauteur pour placer la flamme juste en dessous */
+  width: 150px ; /* Largeur de la flamme */
+  height: 20px; /* Hauteur de la flamme */
+}
+
+.dropdown-content a:hover .flame-gif {
+  display: block; /* Affiche la flamme au survol */
+}
+
+/* Styles pour le drapeau qui tourne */
+.flag-icon {
+  width: 30px ; /* Taille du drapeau */
+  height: auto;
+  margin-left: 5px; /* Espace entre le texte "Mon CV" et le drapeau */
+  animation: spin 2s linear infinite; /* Animation de rotation */
+}
+
+/* Animation de rotation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

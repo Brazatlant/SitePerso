@@ -32,7 +32,13 @@
                     <div class="dropdown-content">
                         <a href="421.html">Jeu de 421</a>
                         <a href="page2.html">Autre jeu</a>
-                        <a href="cv.html">Mon CV</a>
+                        <a href="cv.html">
+                            Mon CV
+                            <span class="flame-container">
+                                <img class="flame-gif" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="Flame" >
+                            </span>
+                            <img class="flag-icon" src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag">
+                        </a>
                         <a href="tetris.html">Tetris</a>
                     </div>
                 </li>
@@ -40,6 +46,46 @@
             </ul>
         </nav>
     </header>
+
+    <style>
+        /* Positionnement de la flamme sous le lien */
+.flame-container {
+  position: relative;
+  display: inline-block;
+}
+
+.flame-gif {
+  position: absolute;
+  align-items: left;
+  left: -10px;
+  transform: translateX(-50%);
+  bottom: -13px ; /* Ajuste la hauteur pour placer la flamme juste en dessous */
+  width: 150px ; /* Largeur de la flamme */
+  height: 20px; /* Hauteur de la flamme */
+}
+
+.dropdown-content a:hover .flame-gif {
+  display: block; /* Affiche la flamme au survol */
+}
+
+/* Styles pour le drapeau qui tourne */
+.flag-icon {
+  width: 30px ; /* Taille du drapeau */
+  height: auto;
+  margin-left: 5px; /* Espace entre le texte "Mon CV" et le drapeau */
+  animation: spin 2s linear infinite; /* Animation de rotation */
+}
+
+/* Animation de rotation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+    </style>
     <main>
         <section>
             <h1>Bienvenue dans le monde de la Cybersécurité</h1>
