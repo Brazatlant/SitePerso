@@ -12,35 +12,34 @@
 </head>
 <body>
     <header>
-      <nav class="menu">
-        <ul>
-            <li class="menu-1">
-                <a href="index.html">
-                    <img src="img/home-icon.png" alt="Home" class="menu-icon">
-                </a>
-            </li>
-            <li class="dropdown menu-2">
-                <a href="#" class="dropbtn">Thèmes</a>
-                <div class="dropdown-content">
-                    <a href="page1.html">Phishing</a>
-                    <a href="page2.html">Page 2</a>
-                </div>
-            </li>
-            <li class="menu-4"><a href="liens.html">Liens</a></li>
-            <li class="menu-3"><a href="contact.html">Contact</a></li>
-            <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
-            <li class="dropdown menu-2">
-                <a href="#" class="dropbtn">TP</a>
-                <div class="dropdown-content">
-                    <a href="421.html">Jeu de 421</a>
-                    <a href="page2.html">Autre jeu</a>
-                    <a href="cv.html">Mon CV</a>
-                    <a href="tetris.html">Tetris</a>
-                </div>
-            </li>
-            <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
-        </ul>
-    </nav>
+        <nav class="menu">
+            <ul>
+                <li class="menu-1">
+                    <a href="index.html">
+                        <img src="img/home-icon.png" alt="Home" class="menu-icon">
+                    </a>
+                </li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">Thèmes</a>
+                    <div class="dropdown-content">
+                        <a href="page1.html">Phishing</a>
+                        <a href="page2.html">Page 2</a>
+                    </div>
+                </li>
+                <li class="menu-4"><a href="liens.html">Liens</a></li>
+                <li class="menu-3"><a href="contact.html">Contact</a></li>
+                <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">TP</a>
+                    <div class="dropdown-content">
+                        <a href="421.html">Jeu de 421</a>
+                        <a href="page2.html">Autre jeu</a>
+                        <a href="cv.html">Mon CV</a>
+                    </div>
+                </li>
+                <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
+            </ul>
+        </nav>
     </header> 
     <canvas width="320" height="640" id="game"></canvas>
 <script>
@@ -401,38 +400,5 @@ function placeTetromino() {
 
     tetromino = getNextTetromino();
 }
-
-const nextBlockCanvas = document.getElementById('nextBlock');
-const nextBlockContext = nextBlockCanvas.getContext('2d');
-
-// Fonction pour dessiner un bloc dans le canvas
-function drawNextTetromino() {
-    nextBlockContext.clearRect(0, 0, nextBlockCanvas.width, nextBlockCanvas.height); // Effacer le canvas précédent
-    const nextTetromino = getNextTetromino(); // Obtenez le prochain bloc
-
-    // Déterminez la taille de la cellule pour le dessin
-    const grid = 20; // Ajustez si nécessaire pour l'échelle
-
-    for (let row = 0; row < nextTetromino.matrix.length; row++) {
-        for (let col = 0; col < nextTetromino.matrix[row].length; col++) {
-            if (nextTetromino.matrix[row][col]) {
-                nextBlockContext.fillStyle = colors[nextTetromino.name];
-                nextBlockContext.fillRect(col * grid, row * grid, grid - 1, grid - 1);
-            }
-        }
-    }
-}
-
-// Modifiez la fonction `placeTetromino` pour mettre à jour la prévisualisation
-function placeTetromino() {
-    // Votre logique existante...
-
-    tetromino = getNextTetromino();
-    drawNextTetromino(); // Mettez à jour la prévisualisation
-}
-
-// Au début du jeu, dessinez le premier prochain bloc
-drawNextTetromino();
-
 
   </script>
