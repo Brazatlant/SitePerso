@@ -6,6 +6,17 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #000000; /* Fond général clair */
+  color: #1f2123; /* Couleur du texte par défaut en mode clair */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #000000; /* Fond général sombre */
+  color: #a770eb; /* Couleur du texte en violet en mode sombre */
+}
 
 header {
   background: #4A148C;
@@ -155,21 +166,12 @@ th {
   background-color: #4A148C;
   color: #fff;
 }
-
-body {
-    display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    align-items: flex-end; /* Positionne la vidéo au bas de l'écran */
-    height: 100vh; /* Corps prend toute la hauteur de la fenêtre */
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Empêche les barres de défilement */
+#myVideo {
+    position: fixed; /* Fixe la vidéo dans la fenêtre */
+    top: 60px; /* Correspond à la hauteur de la bannière */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Ajuste la position pour centrer la vidéo */
+    height: calc(100vh - 60px); /* Prend tout l'espace entre la bannière et le bas de l'écran */
+    object-fit: cover; /* S'adapte à l'espace disponible tout en maintenant le ratio d'aspect */
+    z-index: -1; /* Met la vidéo en arrière-plan */
   }
-  
-  #myVideo {
-    width: 100%; /* La vidéo occupe toute la largeur */
-    height: 0; /* La vidéo commence à 0 de hauteur */
-    animation: expandUp 3s ease-out forwards; /* Animation pour faire grandir la vidéo depuis le bas */
-    object-fit: cover; /* Assure que la vidéo remplit bien l'espace disponible */
-  }
-  
