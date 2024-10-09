@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/justeprix.css"> <!-- Votre CSS existant -->
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>Jeu du Juste Prix</title>
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li class="menu-1">
+                    <a href="index.html">
+                        <img src="img/home-icon.png" alt="Home" class="menu-icon">
+                    </a>
+                </li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">Thèmes</a>
+                    <div class="dropdown-content">
+                        <a href="page1.html">Phishing</a>
+                        <a href="page2.html">Page 2</a>
+                    </div>
+                </li>
+                <li class="menu-4"><a href="liens.html">Liens</a></li>
+                <li class="menu-3"><a href="contact.html">Contact</a></li>
+                <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">TP</a>
+                    <div class="dropdown-content">
+                        <a href="421.html">Jeu de 421</a>
+                        <a href="juste-prix.html">Jeu du Juste Prix</a>
+                    </div>
+                </li>
+                <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h1>Bienvenue dans le jeu du Juste Prix!</h1>
+            <p id="date"></p>
+            <label for="priceInput">Entrez un prix (1-100):</label>
+            <input type="number" id="priceInput" min="1" max="100" required>
+            <br><br>
+
+            <label for="attemptsInput">Nombre de lancés souhaités:</label>
+            <input type="number" id="attemptsInput" min="1" required>
+            <br><br>
+
+            <button id="startGameBtn">Lancer le jeu</button>
+
+            <div id="result"></div>
+        </section>
+    </main>
+
+    <script>
+        // Afficher la date et l'heure
+        const dateElement = document.getElementById('date');
+        const currentDate = new Date();
+        dateElement.textContent = `Date: ${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()} Heure: ${currentDate.getHours()}:${currentDate.getMinutes()}`;
+
+        document.getElementById('startGameBtn').addEventListener('click', function() {
+            const priceInput = parseInt(document.getElementById('priceInput').value);
+            const attemptsInput = parseInt(document.getElementById('attemptsInput').value);
+            const randomPrice = Math.floor(Math.random() * 100) + 1;
+            let attempts = 0;
+
+            let resultText = "";
+            let won = false;
+
+            while (attempts < attemptsInput) {
+                attempts++;
+                if (priceInput < randomPrice) {
+                    resultText += `<img src="img/plus.png" alt="+">`;
+                    resultText += `<p>Essai ${attempts}: C'est plus!</p>`;
+                } else if (priceInput > randomPrice) {
+                    resultText += `<img src="img/minus.png" alt="-">`;
+                    resultText += `<p>Essai ${attempts}: C'est moins!</p>`;
+                } else {
+                    won = true;
+                    resultText += `<img src="img/winner.png" alt="Gagné">`;
+                    resultText += `<p>Bravo! Vous avez trouvé le juste prix: ${randomPrice}</p>`;
+                    break;
+                }
+            }
+
+            if (!won) {
+                resultText += `<img src="img/lost.png" alt="Perdu">`;
+                resultText += `<p>Perdu! Le juste prix était: ${randomPrice}</p>`;
+            }
+
+            resultText += `<p>Vous avez effectué ${attempts} essai(s).</p>`;
+            resultText += `<p>Voulez-vous recommencer ? <button onclick="location.reload();">Oui</button> <button onclick="window.close();">Non</button></p>`;
+            document.getElementById('result').innerHTML = resultText;
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('toggle-theme');
+            const darkModeClass = 'dark-mode';
+
+            // Appliquer le thème en fonction de la préférence stockée
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add(darkModeClass);
+                toggleButton.textContent = '🌞';
+            } else {
+                toggleButton.textContent = '🌙';
+            }
+
+            // Fonction pour basculer le thème
+            function toggleTheme() {
+                document.body.classList.toggle(darkModeClass);
+                if (document.body.classList.contains(darkModeClass)) {
+                    localStorage.setItem('theme', 'dark');
+                    toggleButton.textContent = '🌞';
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    toggleButton.textContent = '🌙';
+                }
+            }
+
+            // Événement de clic pour changer le thème
+            toggleButton.addEventListener('click', toggleTheme);
+        });
+    </script>
+</body>
+</html>

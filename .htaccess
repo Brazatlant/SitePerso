@@ -1,0 +1,2 @@
+# Redirection des pages en construction
+Redirect 302 /page-en-construction.html /construction.html

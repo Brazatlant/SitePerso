@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style1.css">
+    <title>Page 1</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+</head>
+<body>
+    <header>
+        <nav class="menu menu">
+          <ul>
+            <li class="menu-1">
+                <a href="index.html">
+                    <img src="img/home-icon.png" alt="Home" class="menu-icon">
+                </a>
+            </li>
+            <li class="dropdown menu-2">
+                <a href="#" class="dropbtn">Thèmes</a>
+                <div class="dropdown-content">
+                    <a href="page1.html">Phishing</a>
+                    <a href="page2.html">Page 2</a>
+                </div>
+            </li>
+            <li class="menu-4"><a href="liens.html">Liens</a></li>
+            <li class="menu-3"><a href="contact.html">Contact</a></li>
+            <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
+            <li class="dropdown menu-2">
+                <a href="#" class="dropbtn">TP</a>
+                <div class="dropdown-content">
+                    <a href="421.html">Jeu de 421</a>
+                    <a href="page2.html">Autre jeu</a>
+                    <a href="cv.html">Mon CV</a>
+                </div>
+            </li>
+            <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
+        </ul>
+      </nav>
+    </header>
+    <div class="content">
+        <h1>Présentation du Thème 1</h1>
+        <p>Contenu pour présenter le thème 1 ici. Ajoutez plus de détails et d'éléments pertinents pour donner un aperçu complet du thème.</p>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleButton = document.getElementById('toggle-theme');
+        const darkModeClass = 'dark-mode';
+  
+        // Appliquer le thème en fonction de la préférence stockée
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.classList.add(darkModeClass);
+          toggleButton.textContent = '🌞'; 
+        } else {
+          toggleButton.textContent = '🌙'; 
+        }
+
+        function toggleTheme() {
+          document.body.classList.toggle(darkModeClass);
+          if (document.body.classList.contains(darkModeClass)) {
+            localStorage.setItem('theme', 'dark');
+            toggleButton.textContent = '🌞'; 
+          } else {
+            localStorage.setItem('theme', 'light');
+            toggleButton.textContent = '🌙';
+          }
+        }
+  
+        // Événement de clic pour changer le thème
+        toggleButton.addEventListener('click', toggleTheme);
+      });
+    </script>
+</body>
+</html>

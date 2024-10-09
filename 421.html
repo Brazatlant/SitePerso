@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/421.css">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>Jeu de 421</title>
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li class="menu-1">
+                    <a href="index.html">
+                        <img src="img/home-icon.png" alt="Home" class="menu-icon">
+                    </a>
+                </li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">Thèmes</a>
+                    <div class="dropdown-content">
+                        <a href="page1.html">Phishing</a>
+                        <a href="page2.html">Page 2</a>
+                    </div>
+                </li>
+                <li class="menu-4"><a href="liens.html">Liens</a></li>
+                <li class="menu-3"><a href="contact.html">Contact</a></li>
+                <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">TP</a>
+                    <div class="dropdown-content">
+                        <a href="421.html">Jeu de 421</a>
+                        <a href="page2.html">Autre jeu</a>
+                    </div>
+                </li>
+                <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="game-container">
+            <h1>Jeu de 421</h1>
+            <h2>Joueur 1 vs Joueur 2</h2>
+
+            <div class="dice-container">
+                <div class="dice" id="dice1"><img src="img/dice1.png" alt="Dé 1"></div>
+                <div class="dice" id="dice2"><img src="img/dice2.png" alt="Dé 2"></div>
+                <div class="dice" id="dice3"><img src="img/dice3.png" alt="Dé 3"></div>
+            </div>
+
+            <div class="button-container">
+                <button id="roll-p1">Lancer Joueur 1</button>
+                <button id="roll-p2">Lancer Joueur 2</button>
+            </div>
+
+            <div class="score-board">
+                <div class="score" id="score-p1">Score Joueur 1: 0</div>
+                <div class="score" id="score-p2">Score Joueur 2: 0</div>
+            </div>
+
+            <div id="message"></div>
+
+            <button id="restart" class="restart-btn">Recommencer</button>
+        </section>
+    </main>
+
+    <footer>
+        <p id="date-time">Date et Heure : --/--/-- --:--</p>
+        <p>Merci de jouer au Jeu de 421 !</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Code du changement de thème (garde le même que ton index)
+            const toggleButton = document.getElementById('toggle-theme');
+            const darkModeClass = 'dark-mode';
+
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add(darkModeClass);
+                toggleButton.textContent = '🌞';
+            } else {
+                toggleButton.textContent = '🌙';
+            }
+
+            function toggleTheme() {
+                document.body.classList.toggle(darkModeClass);
+                if (document.body.classList.contains(darkModeClass)) {
+                    localStorage.setItem('theme', 'dark');
+                    toggleButton.textContent = '🌞';
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    toggleButton.textContent = '🌙';
+                }
+            }
+
+            toggleButton.addEventListener('click', toggleTheme);
+
+            // Date et Heure
+            function updateDateTime() {
+                const now = new Date();
+                const dateString = now.toLocaleDateString();
+                const timeString = now.toLocaleTimeString();
+                document.getElementById('date-time').textContent = `Date et Heure : ${dateString} ${timeString}`;
+            }
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+        });
+
+        // Script du jeu 421
+        const diceImages = [
+            "img/dice1.png", "img/dice2.png", "img/dice3.png",
+            "img/dice4.png", "img/dice5.png", "img/dice6.png"
+        ];
+
+        let scoreP1 = 0;
+        let scoreP2 = 0;
+
+        function rollDice() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+
+        function calculateScore(dice1, dice2, dice3) {
+            const scoreMap = {
+                111: 1, 222: 2, 333: 3, 444: 4, 555: 5, 666: 10,
+                421: 20, 412: 20, 124: 20, 142: 20, 214: 20, 241: 20
+            };
+            const key = [dice1, dice2, dice3].sort().join('');
+            return scoreMap[key] || 0;
+        }
+
+        function updateDiceImages(dice1, dice2, dice3) {
+            document.getElementById('dice1').firstElementChild.src = diceImages[dice1 - 1];
+            document.getElementById('dice2').firstElementChild.src = diceImages[dice2 - 1];
+            document.getElementById('dice3').firstElementChild.src = diceImages[dice3 - 1];
+        }
+
+        document.getElementById('roll-p1').addEventListener('click', () => {
+            const d1 = rollDice();
+            const d2 = rollDice();
+            const d3 = rollDice();
+            updateDiceImages(d1, d2, d3);
+            const score = calculateScore(d1, d2, d3);
+            scoreP1 += score;
+            document.getElementById('score-p1').textContent = `Score Joueur 1: ${scoreP1}`;
+            checkWinner();
+        });
+
+        document.getElementById('roll-p2').addEventListener('click', () => {
+            const d1 = rollDice();
+            const d2 = rollDice();
+            const d3 = rollDice();
+            updateDiceImages(d1, d2, d3);
+            const score = calculateScore(d1, d2, d3);
+            scoreP2 += score;
+            document.getElementById('score-p2').textContent = `Score Joueur 2: ${scoreP2}`;
+            checkWinner();
+        });
+
+        function checkWinner() {
+            if (scoreP1 >= 100) {
+                document.getElementById('message').textContent = 'Joueur 1 a gagné !';
+            } else if (scoreP2 >= 100) {
+                document.getElementById('message').textContent = 'Joueur 2 a gagné !';
+            }
+        }
+
+        document.getElementById('restart').addEventListener('click', () => {
+            scoreP1 = 0;
+            scoreP2 = 0;
+            document.getElementById('score-p1').textContent = 'Score Joueur 1: 0';
+            document.getElementById('score-p2').textContent = 'Score Joueur 2: 0';
+            document.getElementById('message').textContent = '';
+        });
+    </script>
+</body>
+</html>

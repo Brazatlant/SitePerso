@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.cv-container {
+    width: 80%;
+    margin: 0 auto;
+    background: url('img/fond_cv.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #ffea00;
+    margin-right: 20px;
+}
+
+.header-text h1 {
+    font-size: 2.5em;
+    color: #ffea00;
+}
+
+.header-text p {
+    font-size: 1.2em;
+}
+
+.main-content {
+    margin-top: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    background-color: #ffea00;
+    color: black;
+    padding: 5px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.section ul li {
+    margin-bottom: 5px;
+}
+
+.contact {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.contact h3 {
+    margin-bottom: 10px;
+    color: #ffea00;
+}
+
+.contact ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.contact ul li {
+    margin-bottom: 5px;
+}

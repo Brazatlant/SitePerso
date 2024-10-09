@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="contact-form.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Contact</h1>
+      <form action="https://formsubmit.co/jesuisdanstacave@gmail.com" method="POST">
+
+        <div class="txt_field">
+          <input type="text" name="name" id="name" required>
+          <span></span>
+          <label>Full Name</label>
+        </div>
+
+        <div class="txt_field">
+            <input type="text" name="email" id="email" required>
+            <span></span>
+            <label>Email</label>
+        </div>
+
+        <div class="txt_field">
+          <input type="text" name="message" id="message" required>
+          <span></span>
+          <label>Message</label>
+        </div>
+
+        <div class="pass">
+            <input class="pass" type="reset" value="Reset">
+        </div>
+
+        <input type="submit" value="Submit">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="homePage_link">
+        <a href="#">Back to Home page</a>
+        </div>
+
+      </form>
+    </div>
+  </body>
+</html>
