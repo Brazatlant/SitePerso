@@ -41,8 +41,31 @@
             </ul>
         </nav>
     </header> 
+
     <canvas width="320" height="640" id="game"></canvas>
+
+    <div id="explosion"></div>
+    <div id="flames"></div>
+
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Délai avant l'explosion (en millisecondes)
+  const explosionDelay = 5000;
+
+  setTimeout(() => {
+    // Afficher et animer l'explosion
+    const explosion = document.getElementById('explosion');
+    explosion.style.display = 'block';
+
+    // Afficher les flammes après un court délai
+    setTimeout(() => {
+      const flames = document.getElementById('flames');
+      flames.style.display = 'block';
+    }, 1000); // Flammes apparaissent 1 seconde après l'explosion
+  }, explosionDelay); // Explosion après 5 secondes
+});
+
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -50,8 +73,6 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// generate a new tetromino sequence
-// @see https://tetris.fandom.com/wiki/Random_Generator
 function generateSequence() {
   const sequence = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
 

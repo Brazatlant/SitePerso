@@ -21,7 +21,7 @@
                     <a href="#" class="dropbtn">Thèmes</a>
                     <div class="dropdown-content">
                         <a href="page1.html">Phishing</a>
-                        <a href="page2.html">Page 2</a>
+                        <a href="chips.html">Chips.</a>
                     </div>
                 </li>
                 <li class="menu-4"><a href="liens.html">Liens</a></li>
@@ -115,7 +115,6 @@
       const toggleButton = document.getElementById('toggle-theme');
       const darkModeClass = 'dark-mode';
 
-      // Appliquer le thème en fonction de la préférence stockée
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add(darkModeClass);
         toggleButton.textContent = '🌞';
@@ -123,7 +122,6 @@
         toggleButton.textContent = '🌙';
       }
 
-      // Fonction pour basculer le thème
       function toggleTheme() {
         document.body.classList.toggle(darkModeClass);
         if (document.body.classList.contains(darkModeClass)) {
@@ -134,8 +132,6 @@
           toggleButton.textContent = '🌙';
         }
       }
-
-      // Événement de clic pour changer le thème
       toggleButton.addEventListener('click', toggleTheme);
     });
 </script>

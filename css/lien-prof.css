@@ -163,7 +163,8 @@ header {
   width: 150px; /* Taille fixe pour les images */
   height: auto; /* La hauteur sera ajustée proportionnellement */
   border-radius: 8px; /* Bord arrondi pour les images */
-  box-shadow: 0 0 115px rgba(0, 0, 0, 0.3); /* Ombre portée pour les images */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Ombre portée pour les images */
+  border: 1px outset rgb(46, 18, 18);
 }
 
 .image-title {

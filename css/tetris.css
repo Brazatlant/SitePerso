@@ -300,3 +300,53 @@ canvas {
 .next-tetromino canvas {
     border: 1px solid #333; /* Bordure pour le canvas */
 }
+
+
+#explosion {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background: url('img/explosion.gif') no-repeat center;
+  background-size: cover;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: explode 1s ease-out forwards;
+  display: none;
+}
+
+#flames {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 400px;
+  background: url('img/flames.gif') no-repeat center;
+  background-size: cover;
+  opacity: 0;
+  animation: burn 3s ease-in forwards;
+  display: none;
+}
+
+@keyframes explode {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes burn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
