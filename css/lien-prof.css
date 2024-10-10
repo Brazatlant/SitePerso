@@ -297,3 +297,12 @@ body.dark-mode {
     transform: rotate(360deg);
   }
 }
+
+.image-title-discord {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #a770eb; /* Couleur du texte en violet en mode sombre */
+  font-weight: bold;
+  margin-bottom: 25%;
+}
