@@ -164,7 +164,7 @@ header {
   height: auto; /* La hauteur sera ajustée proportionnellement */
   border-radius: 8px; /* Bord arrondi pour les images */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Ombre portée pour les images */
-  border: 1px outset rgb(46, 18, 18);
+  border: 1px outset rgb(0, 0, 0);
 }
 
 .image-title {
@@ -298,11 +298,7 @@ body.dark-mode {
   }
 }
 
-.image-title-discord {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #a770eb; /* Couleur du texte en violet en mode sombre */
-  font-weight: bold;
-  margin-bottom: 25%;
+
+.petitlogo{
+  margin-top: 15%;
 }
