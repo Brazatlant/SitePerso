@@ -21,7 +21,7 @@
                     <a href="#" class="dropbtn">Thèmes</a>
                     <div class="dropdown-content">
                         <a href="page1.html">Phishing</a>
-                        <a href="chips.html">Chips.</a>
+                        <a href="chips.html">Chips</a>
                     </div>
                 </li>
                 <li class="menu-4"><a href="liens.html">Liens</a></li>
@@ -35,7 +35,7 @@
                         <a href="cv.html">
                             Mon CV
                             <span class="flame-container">
-                                <img class="flame-gif" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="Flame" >
+                                <img class="flame-gif" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="Flame">
                             </span>
                             <img class="flag-icon" src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag">
                         </a>
@@ -46,36 +46,70 @@
             </ul>
         </nav>
     </header>
+
     <h1>Pierre<br>Ancelin</h1>
     <audio id="background-audio" autoplay loop>
         <source src="img/USA.mp3" type="audio/mpeg">
     </audio>
-    <img class="Moi" src="img/Cv_Spin.gif" alt="">
+    <img class="Moi" src="img/Cv_Spin.gif" alt="Moi qui tourne">
     <img class="firework" src="https://img.clipart-library.com/2/clip-transparent-fireworks-gif/clip-transparent-fireworks-gif-2.gif">
+    
+    <!-- Section À propos -->
+    <section id="about" class="about">
+        <h2>À propos de moi</h2>
+        <p>Passionné par la cybersécurité et les technologies émergentes. J'aime relever des défis complexes et trouver des solutions innovantes.</p>
+    </section>
+
+    <!-- Section Expérience -->
+    <section id="experience" class="experience">
+        <h2>Expérience</h2>
+        <ul>
+            <li><strong>Développeur Web</strong> - Entreprise X (2022 - Présent)</li>
+            <li><strong>Stage en Cybersécurité</strong> - Entreprise Y (2021)</li>
+        </ul>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="skills" class="skills">
+        <h2>Compétences</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Python, C++</li>
+            <li>Cybersécurité : Audit, Sécurisation des systèmes</li>
+        </ul>
+    </section>
+
+    <!-- Formulaire de contact -->
+    <section id="contact" class="contact-form">
+        <h2>Contactez-moi</h2>
+        <form action="submit-contact.php" method="POST">
+            <input type="text" name="name" placeholder="Nom" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <!-- Sons Biker et Johnny -->
     <a href="#" id="biker-audio-trigger">
         <img class="biker" src="https://media1.tenor.com/m/xFYrDGPvOTIAAAAC/america-flag.gif" width="450px" alt="Biker">
     </a>
     <audio id="biker-audio" src="img/WTFKM.ogg" preload="auto"></audio>
-    <audio id="biker-audio" src="img/Allumer le feu.mp3" preload="auto"></audio>
-    
+
     <a href="#" id="johnny-audio-trigger">
-    <img class="johnny" src="https://img.over-blog-kiwi.com/0/94/61/80/20180127/ob_f59a18_johnny-hallyday-allumer-le-feu-gif-ani.gif" width="350px">
+        <img class="johnny" src="https://img.over-blog-kiwi.com/0/94/61/80/20180127/ob_f59a18_johnny-hallyday-allumer-le-feu-gif-ani.gif" width="350px" alt="Johnny">
     </a>    
     <audio id="johnny-audio" src="img/Allumer le feu.mp3" preload="auto"></audio>
-
-    <img class="fireworkd" src="https://img.clipart-library.com/2/clip-transparent-fireworks-gif/clip-transparent-fireworks-gif-2.gif">
-    <img class="flame" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="" width="1900" height="450" style="transform: scaleY(0.7);">
     
-
 </body>
 </html>
 
 <script>
+// Mode sombre / clair
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('toggle-theme');
     const darkModeClass = 'dark-mode';
 
-    // Appliquer le thème en fonction de la préférence stockée
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add(darkModeClass);
         toggleButton.textContent = '🌞';
@@ -83,8 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleButton.textContent = '🌙';
     }
 
-    // Fonction pour basculer le thème
-    function toggleTheme() {
+    toggleButton.addEventListener('click', () => {
         document.body.classList.toggle(darkModeClass);
         if (document.body.classList.contains(darkModeClass)) {
             localStorage.setItem('theme', 'dark');
@@ -93,12 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', 'light');
             toggleButton.textContent = '🌙';
         }
-    }
+    });
 
-    // Événement de clic pour changer le thème
-    toggleButton.addEventListener('click', toggleTheme);
-
-    // Gestion des sons (musique de fond, biker et Johnny)
     const bikerAudioTrigger = document.getElementById('biker-audio-trigger');
     const bikerAudio = document.getElementById('biker-audio');
     const backgroundAudio = document.getElementById('background-audio');
@@ -107,47 +136,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function stopAllMusic() {
         bikerAudio.pause();
-        bikerAudio.currentTime = 0; // Remet la musique du biker au début
+        bikerAudio.currentTime = 0;
         johnnyAudio.pause();
-        johnnyAudio.currentTime = 0; // Remet la musique de Johnny au début
+        johnnyAudio.currentTime = 0;
         backgroundAudio.pause();
     }
 
-    // Gestion du clic sur l'image du biker
     bikerAudioTrigger.addEventListener('click', (e) => {
-        e.preventDefault(); // Empêche l'action par défaut du lien
-
+        e.preventDefault();
         if (bikerAudio.paused) {
-            stopAllMusic();  // Arrête toutes les autres musiques
-            bikerAudio.play(); // Joue la musique du biker
+            stopAllMusic();
+            bikerAudio.play();
         } else {
-            bikerAudio.pause(); // Met en pause la musique du biker
-            backgroundAudio.play(); // Relance la musique de fond
+            bikerAudio.pause();
+            backgroundAudio.play();
         }
     });
 
-    // Gestion du clic sur l'image de Johnny
     johnnyAudioTrigger.addEventListener('click', (e) => {
-        e.preventDefault(); // Empêche l'action par défaut du lien
-
+        e.preventDefault();
         if (johnnyAudio.paused) {
-            stopAllMusic();  // Arrête toutes les autres musiques
-            johnnyAudio.play(); // Joue la musique de Johnny
+            stopAllMusic();
+            johnnyAudio.play();
         } else {
-            johnnyAudio.pause(); // Met en pause la musique de Johnny
-            backgroundAudio.play(); // Relance la musique de fond
+            johnnyAudio.pause();
+            backgroundAudio.play();
         }
     });
 
-    // Lorsque la musique du biker se termine, relancer la musique de fond
     bikerAudio.addEventListener('ended', () => {
         backgroundAudio.play();
     });
 
-    // Lorsque la musique de Johnny se termine, relancer la musique de fond
     johnnyAudio.addEventListener('ended', () => {
         backgroundAudio.play();
     });
 });
-
 </script>

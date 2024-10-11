@@ -204,3 +204,41 @@ th {
     transform: rotate(360deg);
   }
 }
+
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #f0f4f8; /* Fond clair amélioré */
+  color: #333;
+}
+
+body.dark-mode {
+  background-color: #1f1f1f;
+  color: #a7a7a7;
+}
+
+header {
+  background: #001f3f; /* Couleur associée à la cybersécurité */
+}
+
+.menu {
+  background: #001f3f;
+}
+
+.menu a {
+  font-size: 20px;
+  color: #fff;
+}
+
+.menu a:hover {
+  color: #17a2b8; /* Transition vers une couleur sécurisée, comme le bleu */
+}
+
+.flag-icon {
+  animation: spin 2s linear infinite;
+  margin-left: 5px;
+}
+
+#toggle-theme {
+  color: #17a2b8; /* Bouton mode sombre/clair en cohérence avec la nouvelle palette */
+}

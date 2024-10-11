@@ -6,178 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <title>Site Perso</title>
+    <title>Site Perso - Cybersécurité</title>
 </head>
 <body>
     <header>
         <nav class="menu">
             <ul>
                 <li class="menu-1">
-                    <a href="index.html">
+                    <a href="index.html" aria-label="Accueil">
                         <img src="img/home-icon.png" alt="Home" class="menu-icon">
                     </a>
                 </li>
                 <li class="dropdown menu-2">
-                    <a href="#" class="dropbtn">Thèmes</a>
+                    <a href="#" class="dropbtn" aria-label="Thèmes de cybersécurité">Thèmes</a>
                     <div class="dropdown-content">
-                        <a href="page1.html">Phishing</a>
-                        <a href="chips.html">Chips.</a>
+                        <a href="page1.html" aria-label="Phishing">
+                            <img src="img/phishing-icon.png" alt="Phishing" class="menu-icon"> Phishing
+                        </a>
+                        <a href="chips.html" aria-label="Sécurité des puces">
+                            <img src="img/chip-icon.png" alt="Chips" class="menu-icon"> Chips
+                        </a>
                     </div>
                 </li>
-                <li class="menu-4"><a href="liens.html">Liens</a></li>
-                <li class="menu-3"><a href="contact.html">Contact</a></li>
-                <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
+                <li class="menu-4">
+                    <a href="liens.html" aria-label="Liens utiles">Liens</a>
+                </li>
+                <li class="menu-3">
+                    <a href="contact.html" aria-label="Contactez-nous">Contact</a>
+                </li>
+                <li class="menu-5">
+                    <a href="lien-prof.html" aria-label="Lien Professeur">Lien Prof</a>
+                </li>
                 <li class="dropdown menu-2">
-                    <a href="#" class="dropbtn">TP</a>
+                    <a href="#" class="dropbtn" aria-label="Travaux Pratiques">TP</a>
                     <div class="dropdown-content">
-                        <a href="421.html">Jeu de 421</a>
-                        <a href="page2.html">Autre jeu</a>
-                        <a href="cv.html">
+                        <a href="421.html" aria-label="Jeu de 421">Jeu de 421</a>
+                        <a href="page2.html" aria-label="Autre jeu">Autre jeu</a>
+                        <a href="cv.html" aria-label="Mon CV">
                             Mon CV
                             <span class="flame-container">
-                                <img class="flame-gif" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="Flame" >
+                                <img class="flame-gif" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="Flame">
                             </span>
                             <img class="flag-icon" src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag">
                         </a>
-                        <a href="tetris.html">Tetris</a>
+                        <a href="tetris.html" aria-label="Jeu de Tetris">Tetris</a>
                     </div>
                 </li>
-                <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
+                <button id="toggle-theme" aria-label="Changer de mode sombre/clair">🌙</button>
             </ul>
         </nav>
     </header>
 
-    <style>
-        /* Positionnement de la flamme sous le lien */
-.flame-container {
-  position: relative;
-  display: inline-block;
-}
-
-.flame-gif {
-  position: absolute;
-  align-items: left;
-  left: -10px;
-  transform: translateX(-50%);
-  bottom: -13px ; /* Ajuste la hauteur pour placer la flamme juste en dessous */
-  width: 150px ; /* Largeur de la flamme */
-  height: 20px; /* Hauteur de la flamme */
-}
-
-.dropdown-content a:hover .flame-gif {
-  display: block; /* Affiche la flamme au survol */
-}
-
-/* Styles pour le drapeau qui tourne */
-.flag-icon {
-  width: 30px ; /* Taille du drapeau */
-  height: auto;
-  margin-left: 5px; /* Espace entre le texte "Mon CV" et le drapeau */
-  animation: spin 2s linear infinite; /* Animation de rotation */
-}
-
-/* Animation de rotation */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-    </style>
     <main>
-        <section>
-            <h1>Bienvenue dans le monde de la Cybersécurité</h1>
-            <p>La cybersécurité est essentielle pour protéger les informations sensibles et prévenir les cyberattaques.</p>
+        <section class="intro">
+            <h1>Bienvenue sur mon site dédié à la cybersécurité</h1>
+            <p>
+                La cybersécurité est un domaine essentiel dans le monde moderne où la technologie est omniprésente. 
+                Sur ce site, vous découvrirez divers aspects de la cybersécurité, y compris des informations sur les attaques 
+                comme le phishing, ainsi que des conseils pour protéger vos appareils et données personnelles.
+            </p>
+            <p>
+                Parcourez les différents thèmes pour en savoir plus, et n'hésitez pas à me contacter pour toute question ou collaboration.
+            </p>
+        </section>
+
+        <section class="highlights">
+            <h2>Points Clés</h2>
             <ul>
-                <li>Protection des données</li>
-                <li>Prévention des cyberattaques</li>
-                <li>Gestion des incidents</li>
+                <li>Protection contre les cyberattaques</li>
+                <li>Comprendre les menaces : Phishing, Malware, etc.</li>
+                <li>Sécurisation des systèmes informatiques</li>
+                <li>Stratégies de défense et cryptographie</li>
             </ul>
         </section>
-
-        <section>
-            <h2>Menaces et Solutions</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Menace</th>
-                        <th>Description</th>
-                        <th>Solution</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Phishing</td>
-                        <td>Obtention de données sensibles par tromperie.</td>
-                        <td>Filtres anti-phishing, vérification des e-mails.</td>
-                    </tr>
-                    <tr>
-                        <td>Malware</td>
-                        <td>Logiciels malveillants visant à endommager les systèmes.</td>
-                        <td>Antivirus, mises à jour régulières.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Galerie de Cybersécurité</h2>
-            <div id="carouselExampleCaptions" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/phishing.png" class="d-block w-100" alt="Cybersecurity Image 1" height="250px">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Image 1</h5>
-                            <p>Description de l'image 1.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/cybersecurity2.jpg" class="d-block w-100" alt="Cybersecurity Image 2">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Image 2</h5>
-                            <p>Description de l'image 2.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
     </main>
+
+    <footer>
+        <p>&copy; 2024 - Mon site de cybersécurité. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const toggleButton = document.getElementById('toggle-theme');
+          const darkModeClass = 'dark-mode';
+
+          if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add(darkModeClass);
+            toggleButton.textContent = '🌞';
+          } else {
+            toggleButton.textContent = '🌙';
+          }
+
+          function toggleTheme() {
+            document.body.classList.toggle(darkModeClass);
+            if (document.body.classList.contains(darkModeClass)) {
+              localStorage.setItem('theme', 'dark');
+              toggleButton.textContent = '🌞';
+            } else {
+              localStorage.setItem('theme', 'light');
+              toggleButton.textContent = '🌙';
+            }
+          }
+          toggleButton.addEventListener('click', toggleTheme);
+        });
+    </script>
 </body>
 </html>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggleButton = document.getElementById('toggle-theme');
-      const darkModeClass = 'dark-mode';
-
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add(darkModeClass);
-        toggleButton.textContent = '🌞';
-      } else {
-        toggleButton.textContent = '🌙';
-      }
-
-      function toggleTheme() {
-        document.body.classList.toggle(darkModeClass);
-        if (document.body.classList.contains(darkModeClass)) {
-          localStorage.setItem('theme', 'dark');
-          toggleButton.textContent = '🌞';
-        } else {
-          localStorage.setItem('theme', 'light');
-          toggleButton.textContent = '🌙';
-        }
-      }
-      toggleButton.addEventListener('click', toggleTheme);
-    });
-</script>
