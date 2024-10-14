@@ -217,13 +217,6 @@ body.dark-mode {
   color: #a7a7a7;
 }
 
-header {
-  background: #001f3f; /* Couleur associée à la cybersécurité */
-}
-
-.menu {
-  background: #001f3f;
-}
 
 .menu a {
   font-size: 20px;
