@@ -82,23 +82,6 @@
           }
           toggleButton.addEventListener('click', toggleTheme);
         });
-
-
-        //twitter
-        document.addEventListener('DOMContentLoaded', () => {
-      const twitterTimeline = document.querySelector('.twitter-timeline');
-      const twitterToggle = document.getElementById('twitter-toggle');
-  
-      // Toggle l'affichage de la timeline en plein écran
-      twitterToggle.addEventListener('click', () => {
-        twitterTimeline.classList.toggle('fullscreen'); // Toggle la classe qui affiche ou cache la timeline
-        if (twitterTimeline.classList.contains('fullscreen')) {
-          twitterToggle.textContent = '✕'; // Change l'icône en croix pour fermer
-        } else {
-          twitterToggle.textContent = 'T'; // Remet le bouton Twitter
-        }
-      });
-    });
     </script>
 
 <footer>
@@ -106,4 +89,20 @@
 </footer>
 </body>
 </html>
- 
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const twitterTimeline = document.querySelector('.twitter-timeline');
+      const twitterToggle = document.getElementById('twitter-toggle');
+
+      twitterToggle.addEventListener('click', () => {
+        twitterTimeline.classList.toggle('fullscreen'); 
+        if (twitterTimeline.classList.contains('fullscreen')) {
+          twitterToggle.textContent = '✕';
+        } else {
+          twitterToggle.textContent = 'T';
+        }
+      });
+    });
+  </script>
+  
