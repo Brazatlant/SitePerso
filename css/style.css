@@ -267,17 +267,17 @@ main {
     bottom: 0;
     width: 100vw; /* Prend toute la largeur */
     height: 100vh; /* Prend toute la hauteur */
-    display: none; /* Cachée par défaut */
-    z-index: 9999; /* Met la timeline au-dessus de tout le reste */
+    display: none; /* Cachée par défaut en mode mobile */
+    z-index: 9999; /* Priorité sur les autres éléments */
     background-color: white; /* Fond blanc si besoin */
   }
 
-  /* Petit bouton visible en mode mobile */
+  /* Bouton visible en mode mobile */
   #twitter-toggle {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #1da1f2; /* Couleur de Twitter */
+    background-color: #1da1f2; /* Couleur Twitter */
     color: white;
     border: none;
     border-radius: 50%;
@@ -287,12 +287,12 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000; /* Par-dessus les autres éléments */
+    z-index: 10000; /* Priorité sur les autres éléments */
     cursor: pointer;
   }
 
+  /* Lorsque la timeline est affichée en plein écran */
   .twitter-timeline.fullscreen {
-    display: block;
+    display: block; /* La timeline est affichée en plein écran */
   }
 }
-
