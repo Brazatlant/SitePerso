@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <title>Site Perso - Cybersécurité</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+        <title>Site Perso - Cybersécurité</title>
+    </head>
+    
 <body>
     <header>
         <nav class="menu">
@@ -46,8 +49,14 @@
             </ul>
         </nav>
     </header>
-    <a class="twitter-timeline" data-lang="fr" data-theme="dark" href="https://twitter.com/CNIL?ref_src=twsrc%5Etfw">Tweets by CNIL</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+    <main>
+        <p>Page dédiée au cyber</p>
+        <a class="twitter-timeline" data-lang="fr" data-theme="dark" href="https://twitter.com/CNIL?ref_src=twsrc%5Etfw">Tweets by CNIL</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </main>
+      <button id="twitter-toggle">T</button>
+      
+      
     <main>
         <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -73,6 +82,15 @@
           }
           toggleButton.addEventListener('click', toggleTheme);
         });
+
+        document.addEventListener('DOMContentLoaded', () => {
+      const twitterTimeline = document.querySelector('.twitter-timeline');
+      const twitterToggle = document.getElementById('twitter-toggle');
+  
+      twitterToggle.addEventListener('click', () => {
+        twitterTimeline.classList.toggle('fullscreen'); // Toggle entre cacher et afficher
+      });
+    });
     </script>
 
 <footer>
@@ -80,3 +98,5 @@
 </footer>
 </body>
 </html>
+
+  

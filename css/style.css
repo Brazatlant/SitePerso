@@ -11,6 +11,9 @@ body {
   background-color: #fff; /* Fond général clair */
   color: #1f2123; /* Couleur du texte par défaut en mode clair */
   transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Assure que la page prend toujours au moins la hauteur de l'écran */
 }
 
 body.dark-mode {
@@ -232,12 +235,64 @@ footer {
   color: #FFFF;
 }
 
+
+main {
+  flex: 1; /* Permet au contenu principal de prendre tout l'espace disponible */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 20px; /* Espace entre le flux Twitter et le bas de la page */
+}
+
+/* Styles par défaut pour les grands écrans (mode PC) */
 .twitter-timeline {
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 25vw;
-  height: 815px;
-  max-width: 400px;
+  width: 25vw; /* 1/4 de l'écran */
+  height: calc(100vh - 200px); /* Ajuste la hauteur de la timeline pour qu'elle se situe entre le bas de la page et le menu */
   overflow: auto;
-} 
+  display: block; /* Visible par défaut */
+}
+
+#twitter-toggle {
+  display: none;
+}
+
+/* Mode mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .twitter-timeline {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100vw; /* Prend toute la largeur */
+    height: 100vh; /* Prend toute la hauteur */
+    display: none; /* Cachée par défaut */
+    z-index: 9999; /* Met la timeline au-dessus de tout le reste */
+    background-color: white; /* Fond blanc si besoin */
+  }
+
+  /* Petit bouton visible en mode mobile */
+  #twitter-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1da1f2; /* Couleur de Twitter */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Par-dessus les autres éléments */
+    cursor: pointer;
+  }
+
+  .twitter-timeline.fullscreen {
+    display: block;
+  }
+}
+
