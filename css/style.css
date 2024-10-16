@@ -53,11 +53,11 @@ header.dark-mode {
   font-size: 22px;
   text-transform: uppercase;
   text-decoration: none;
-  color: #fff;
+  color: #fff; /* Couleur du texte des liens du menu en blanc */
   display: block;
   position: relative;
   padding: 4px 0;
-  transition: color 0.3s;
+  transition: color 0.3s; /* Transition pour la couleur du texte */
 }
 
 .menu.dark-mode a {
@@ -218,20 +218,26 @@ body.dark-mode {
 }
 
 
-.menu a {
-  font-size: 20px;
-  color: #fff;
-}
-
-.menu a:hover {
-  color: #17a2b8; /* Transition vers une couleur sécurisée, comme le bleu */
-}
-
 .flag-icon {
   animation: spin 2s linear infinite;
   margin-left: 5px;
 }
 
-#toggle-theme {
-  color: #17a2b8; /* Bouton mode sombre/clair en cohérence avec la nouvelle palette */
+footer {
+  position:fixed;
+  bottom:0;
+  text-align: center;
+  padding: 5px;
+  background-color: #4a148cb2;
+  color: #FFFF;
+}
+
+.twitter-timeline {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 25vw;
+  height: 815px;
+  max-width: 400px;
+  overflow: auto;
 }
