@@ -211,7 +211,7 @@ main {
 }
 
 body.dark-mode main {
-  background-color: #1f2123; /* Couleur de fond du contenu principal pour le mode sombre */
+
   color: #e0e0e0; /* Couleur du texte du contenu principal pour le mode sombre */
 }
 
@@ -301,4 +301,14 @@ body.dark-mode {
 
 .petitlogo{
   margin-top: 15%;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place derrière le contenu */
+  pointer-events: none; /* Permet aux clics de passer à travers */
 }
