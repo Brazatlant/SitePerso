@@ -31,36 +31,58 @@ header.dark-mode {
 }
 
 .menu {
-  display: flex;
-  justify-content: center; /* Centre le menu horizontalement */
-  list-style-type: none; /* Supprime les puces de la liste */
-  padding: 0;
+  padding: 20px;
+  text-align: center;
+  background: #4A148C;
+}
+
+.menu.dark-mode {
+  background-color: #333; /* Fond du menu en mode sombre */
+}
+
+.menu ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 .menu li {
-  margin: 0 20px; /* Espacement entre les éléments de menu */
+  display: inline-block;
+  margin: 0 15px;
+  position: relative;
 }
 
 .menu a {
-  text-decoration: none; /* Supprime le soulignement des liens */
-  color: #000; /* Couleur des liens */
+  font-size: 22px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s;
 }
 
-.menu a:hover {
-  color: #007BFF; /* Couleur au survol */
+.menu.dark-mode a {
+  color: #a770eb; /* Couleur du texte du menu en violet en mode sombre */
 }
 
-.dropdown-content {
-  display: none; /* Cacher le contenu du dropdown par défaut */
+/* Styles pour les animations du menu */
+.menu a::before {
+  content: "";
+  width: 100%;
+  height: 4px;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  z-index: 1;
+  left: 0;
+  bottom: 0;
+  background: #E91E63;
+  transition: transform 0.5s ease;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block; /* Afficher le contenu du dropdown au survol */
+.menu a:hover::before {
+  transform: scaleX(1);
 }
 
 /* Styles pour le menu déroulant */
@@ -192,7 +214,6 @@ img[usemap="#image-map"] {
   position: fixed;
   right: 0;
 }
-
 /* Positionnement de la flamme sous le lien */
 .flame-container {
   position: relative;
@@ -229,4 +250,9 @@ img[usemap="#image-map"] {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+.petitlogo{
+  margin-top: 15%;
 }

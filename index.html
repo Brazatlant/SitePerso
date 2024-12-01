@@ -1,114 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <title>Site Perso - Cybersécurité</title>
-</head>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="css/style.css">
+      <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- Particles.js -->
+      <title>Site Perso - Cybersécurité</title>
+    </head>
+    
 <body>
     <header>
         <nav class="menu">
             <ul>
                 <li class="menu-1">
-                    <a href="index.html" aria-label="Accueil">
+                    <a href="index.html">
                         <img src="img/home-icon.png" alt="Home" class="menu-icon">
                     </a>
                 </li>
                 <li class="dropdown menu-2">
-                    <a href="#" class="dropbtn" aria-label="Thèmes de cybersécurité">Thèmes</a>
+                    <a href="#" class="dropbtn">Thèmes</a>
                     <div class="dropdown-content">
-                        <a href="page1.html" aria-label="Phishing">
-                            <img src="img/phishing-icon.png" alt="Phishing" class="menu-icon"> Phishing
-                        </a>
-                        <a href="chips.html" aria-label="Sécurité des puces">
-                            <img src="img/chip-icon.png" alt="Chips" class="menu-icon"> Chips
-                        </a>
+                        <a href="page1.html">Phishing</a>
+                        <a href="chips.html">Chips.</a>
                     </div>
                 </li>
-                <li class="menu-4">
-                    <a href="liens.html" aria-label="Liens utiles">Liens</a>
-                </li>
-                <li class="menu-3">
-                    <a href="contact.html" aria-label="Contactez-nous">Contact</a>
-                </li>
-                <li class="menu-5">
-                    <a href="lien-prof.html" aria-label="Lien Professeur">Lien Prof</a>
-                </li>
+                <li class="menu-4"><a href="liens.html">Liens</a></li>
+                <li class="menu-3"><a href="contact.html">Contact</a></li>
+                <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
                 <li class="dropdown menu-2">
-                    <a href="#" class="dropbtn" aria-label="Travaux Pratiques">TP</a>
+                    <a href="#" class="dropbtn">TP</a>
                     <div class="dropdown-content">
-                        <a href="421.html" aria-label="Jeu de 421">Jeu de 421</a>
-                        <a href="page2.html" aria-label="Autre jeu">Autre jeu</a>
-                        <a href="cv.html" aria-label="Mon CV">
+                        <a href="421.html">Jeu de 421</a>
+                        <a href="page2.html">Autre jeu</a>
+                        <a href="cv.html">
                             Mon CV
                             <span class="flame-container">
-                                <img class="flame-gif" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="Flame">
+                                <img class="flame-gif" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="Flame" >
                             </span>
                             <img class="flag-icon" src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag">
                         </a>
-                        <a href="tetris.html" aria-label="Jeu de Tetris">Tetris</a>
+                        <a href="tetris.html">Tetris</a>
                     </div>
                 </li>
-                <button id="toggle-theme" aria-label="Changer de mode sombre/clair">🌙</button>
+                <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
             </ul>
         </nav>
     </header>
+    <div id="particles-js"></div>
 
     <main>
-        <section class="intro">
-            <h1>Bienvenue sur mon site dédié à la cybersécurité</h1>
-            <p>
-                La cybersécurité est un domaine essentiel dans le monde moderne où la technologie est omniprésente. 
-                Sur ce site, vous découvrirez divers aspects de la cybersécurité, y compris des informations sur les attaques 
-                comme le phishing, ainsi que des conseils pour protéger vos appareils et données personnelles.
-            </p>
-            <p>
-                Parcourez les différents thèmes pour en savoir plus, et n'hésitez pas à me contacter pour toute question ou collaboration.
-            </p>
-        </section>
-
-        <section class="highlights">
-            <h2>Points Clés</h2>
-            <ul>
-                <li>Protection contre les cyberattaques</li>
-                <li>Comprendre les menaces : Phishing, Malware, etc.</li>
-                <li>Sécurisation des systèmes informatiques</li>
-                <li>Stratégies de défense et cryptographie</li>
-            </ul>
-        </section>
+        <p>Page dédiée au cyber</p>
+        <a class="twitter-timeline" data-lang="fr" data-theme="dark" href="https://twitter.com/CNIL?ref_src=twsrc%5Etfw">Tweets by CNIL</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </main>
 
     <footer>
-        <p>&copy; 2024 - Mon site de cybersécurité. Tous droits réservés.</p>
+        <small>&copy; 2024 - Brazatlant.</small>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const toggleButton = document.getElementById('toggle-theme');
-          const darkModeClass = 'dark-mode';
-
-          if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add(darkModeClass);
-            toggleButton.textContent = '🌞';
-          } else {
-            toggleButton.textContent = '🌙';
-          }
-
-          function toggleTheme() {
-            document.body.classList.toggle(darkModeClass);
-            if (document.body.classList.contains(darkModeClass)) {
-              localStorage.setItem('theme', 'dark');
-              toggleButton.textContent = '🌞';
-            } else {
-              localStorage.setItem('theme', 'light');
-              toggleButton.textContent = '🌙';
-            }
-          }
-          toggleButton.addEventListener('click', toggleTheme);
-        });
-    </script>
+    <script src="animation.js"></script>
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const twitterTimeline = document.querySelector('.twitter-timeline');
+      const twitterToggle = document.getElementById('twitter-toggle');
+
+      twitterToggle.addEventListener('click', () => {
+        twitterTimeline.classList.toggle('fullscreen'); 
+        if (twitterTimeline.classList.contains('fullscreen')) {
+          twitterToggle.textContent = '✕';
+        } else {
+          twitterToggle.textContent = 'T';
+        }
+      });
+    });
+  </script>
+  
