@@ -9,7 +9,7 @@
 body {
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: #fff; /* Fond général clair */
-  background: linear-gradient(180deg, rgba(0,0,0,1) 35%, rgba(17,10,105,1) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 35%, rgba(74, 20, 140) 100%);
   transition: background-color 0.3s, color 0.3s;
   display: flex;
   flex-direction: column;
