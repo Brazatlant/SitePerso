@@ -2,125 +2,184 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- Particles.js -->
     <title>Distributeur de Boissons</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        .machine {
-            border: 2px solid #333;
-            padding: 20px;
-            background-color: #fff;
-            display: inline-block;
-            width: 300px;
+        .machine-container {
+            background: #ddd;
             border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .btn {
-            margin: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background-color: #ddd;
-        }
-        .output {
-            margin-top: 20px;
-            min-height: 50px;
+        .display {
+            background: #222;
+            color: #0f0;
             padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #e9e9e9;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            min-height: 50px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #555;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #333;
         }
         .gobelet {
-            margin: 10px auto;
-        }
-        .hidden {
-            display: none;
+            margin: 20px auto;
         }
     </style>
 </head>
 <body>
-    <div class="machine">
-        <h1>Distributeur de Boissons</h1>
-        <div id="welcome">Bienvenue !</div>
-        <div id="date-time"></div>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li class="menu-1">
+                    <a href="index.html">
+                        <img src="img/home-icon.png" alt="Home" class="menu-icon">
+                    </a>
+                </li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">Thèmes</a>
+                    <div class="dropdown-content">
+                        <a href="page1.html">Phishing</a>
+                        <a href="chips.html">Chips.</a>
+                    </div>
+                </li>
+                <li class="menu-4"><a href="liens.html">Liens</a></li>
+                <li class="menu-3"><a href="contact.html">Contact</a></li>
+                <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
+                <li class="dropdown menu-2">
+                    <a href="#" class="dropbtn">TP</a>
+                    <div class="dropdown-content">
+                        <a href="421.html">Jeu de 421</a>
+                        <a href="page2.html">Autre jeu</a>
+                        <a href="cv.html">
+                            Mon CV
+                            <span class="flame-container">
+                                <img class="flame-gif" src="https://www.manuelonthemic.com/assets/fuego7.gif" alt="Flame" >
+                            </span>
+                            <img class="flag-icon" src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag">
+                        </a>
+                        <a href="tetris.html">Tetris</a>
+                    </div>
+                </li>
+                <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
+            </ul>
+        </nav>
+    </header>
+    <div id="particles-js"></div>
+    <div class="machine-container">
+        <div id="date-display" class="display">Bienvenue !</div>
+        <div id="status-display" class="display">Insérez une pièce pour commencer.</div>
 
-        <h3>Choisissez une boisson :</h3>
-        <button class="btn" onclick="choisirBoisson('café')">Café (0,60€)</button>
-        <button class="btn" onclick="choisirBoisson('thé')">Thé (0,90€)</button>
-        <button class="btn" onclick="choisirBoisson('jus d’orange')">Jus d’orange (0,80€)</button>
+        <div class="buttons">
+            <button onclick="selectDrink('cafe')">☕ Café (0,60€)</button>
+            <button onclick="selectDrink('the')">🍵 Thé (0,90€)</button>
+            <button onclick="selectDrink('orange')">🍊 Jus d'orange (0,80€)</button>
+        </div>
 
-        <h3>Insérez une pièce :</h3>
-        <button class="btn" onclick="ajouterPiece(0.5)">0,50€</button>
-        <button class="btn" onclick="ajouterPiece(1)">1,00€</button>
-        <button class="btn" onclick="ajouterPiece(2)">2,00€</button>
+        <div id="money-input" class="display">
+            <p>Ajoutez votre monnaie :</p>
+            <button onclick="addMoney(0.5)">0,50€</button>
+            <button onclick="addMoney(1)">1,00€</button>
+            <button onclick="addMoney(2)">2,00€</button>
+            <p>Monnaie insérée : <span id="money">0.00</span>€</p>
+        </div>
 
-        <div class="output" id="message">Vous devez insérer une pièce.</div>
+        <div id="gobelet-container" class="gobelet">
+            <img id="gobelet-img" src="img/gobelet-full.png" alt="Gobelet" style="width:100px;">
+            <p id="gobelet-status">Gobelets restants : <span id="gobelet-count">8</span></p>
+        </div>
 
-        <h3>Quantité de gobelets :</h3>
-        <img src="gobelet4.png" alt="Gobelets" class="gobelet" id="gobelet-image">
+        <button id="send-alert" style="display: none;" onclick="sendAlert()">Envoyer un mail de signalement</button>
     </div>
 
     <script>
-        const prixBoissons = { "café": 0.6, "thé": 0.9, "jus d’orange": 0.8 };
-        let montantInsere = 0;
-        let gobeletsRestants = 8;
+        let moneyInserted = 0;
+        let gobelets = 8;
 
-        function mettreAJourDate() {
-            const date = new Date();
-            const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-            document.getElementById("date-time").innerText = date.toLocaleString("fr-FR", options);
+        function updateDate() {
+            const now = new Date();
+            document.getElementById('date-display').textContent = now.toLocaleString('fr-FR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
         }
-        setInterval(mettreAJourDate, 1000);
-        mettreAJourDate();
+        setInterval(updateDate, 1000);
 
-        function ajouterPiece(piece) {
-            montantInsere += piece;
-            afficherMessage(`Vous avez inséré : ${montantInsere.toFixed(2)}€`);
+        function addMoney(amount) {
+            moneyInserted += amount;
+            document.getElementById('money').textContent = moneyInserted.toFixed(2);
         }
 
-        function choisirBoisson(boisson) {
-            if (gobeletsRestants <= 0) {
-                afficherMessage("Plus de gobelets !");
-                document.getElementById("gobelet-image").src = "gobelet0.png";
-                return;
-            }
-            const prix = prixBoissons[boisson];
-            if (montantInsere >= prix) {
-                montantInsere -= prix;
-                afficherMessage(`Préparation de ${boisson}...`);
-                setTimeout(() => {
-                    gobeletsRestants--;
-                    mettreAJourGobelets();
-                    afficherMessage(`Vous êtes servi en ${boisson}.`);
-                }, 5000);
+        function selectDrink(type) {
+            const prices = { cafe: 0.60, the: 0.90, orange: 0.80 };
+            if (moneyInserted >= prices[type]) {
+                if (gobelets > 0) {
+                    moneyInserted -= prices[type];
+                    document.getElementById('money').textContent = moneyInserted.toFixed(2);
+                    prepareDrink(type);
+                } else {
+                    document.getElementById('status-display').textContent = "Plus de gobelets disponibles.";
+                    document.getElementById('send-alert').style.display = "block";
+                }
             } else {
-                afficherMessage(`Argent insuffisant. Insérez encore ${(prix - montantInsere).toFixed(2)}€`);
+                document.getElementById('status-display').textContent =
+                    "Argent insuffisant. Ajoutez " + (prices[type] - moneyInserted).toFixed(2) + "€.";
             }
         }
 
-        function afficherMessage(message) {
-            document.getElementById("message").innerText = message;
+        function prepareDrink(type) {
+            const names = { cafe: "Café", the: "Thé", orange: "Jus d'orange" };
+            document.getElementById('status-display').textContent =
+                "Préparation de " + names[type] + " en cours...";
+            setTimeout(() => {
+                gobelets -= 1;
+                updateGobelets();
+                document.getElementById('status-display').textContent =
+                    "Vous êtes servi en " + names[type] + ". Bonne dégustation !";
+            }, 5000);
         }
 
-        function mettreAJourGobelets() {
-            if (gobeletsRestants > 6) {
-                document.getElementById("gobelet-image").src = "gobelet4.png";
-            } else if (gobeletsRestants > 4) {
-                document.getElementById("gobelet-image").src = "gobelet3.png";
-            } else if (gobeletsRestants > 2) {
-                document.getElementById("gobelet-image").src = "gobelet2.png";
-            } else if (gobeletsRestants > 0) {
-                document.getElementById("gobelet-image").src = "gobelet1.png";
+        function updateGobelets() {
+            const gobeletImg = document.getElementById('gobelet-img');
+            document.getElementById('gobelet-count').textContent = gobelets;
+            if (gobelets === 0) {
+                gobeletImg.src = "img/gobelet-full.png";
+            } else if (gobelets <= 2) {
+                gobeletImg.src = "img/gobelet-full.png";
             } else {
-                document.getElementById("gobelet-image").src = "gobelet0.png";
+                gobeletImg.src = "gobelet-full.png";
             }
+        }
+
+        function sendAlert() {
+            alert("Un mail de signalement a été envoyé au service de maintenance.");
         }
     </script>
 </body>
