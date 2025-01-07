@@ -17,6 +17,9 @@
 <body>
     <header>
         <nav class="menu">
+            <button class="hamburger" id="hamburger">
+                &#9776;
+              </button>            
             <ul></ul>
         </nav>
     </header>
@@ -80,6 +83,11 @@
 </body>
 
 <script>
+document.getElementById("hamburger").addEventListener("click", function () {
+  this.classList.toggle("active"); // Change l'état du bouton hamburger
+  const menu = document.querySelector(".menu ul");
+  menu.style.display = menu.style.display === "block" ? "none" : "block"; // Afficher/masquer le menu
+});
 document.addEventListener('DOMContentLoaded', () => {
     // Chargement du menu depuis le fichier JSON
     fetch('menu.json')

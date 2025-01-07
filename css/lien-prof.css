@@ -11,20 +11,37 @@
 body {
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: #fff; /* Fond général de la page */
-  color: #a770eb; /* Couleur du texte générale en violet */
+  color: #1f2123; /* Couleur du texte par défaut en mode clair */
   transition: background-color 0.3s, color 0.3s; /* Transition pour le changement de thème */
 }
 
-/* Styles de l'en-tête */
+/* Mode DarkMode */
+body.dark-mode {
+  background-color: #1f2123; /* Fond général sombre */
+  color: #a770eb; /* Couleur du texte en violet en mode sombre */
+}
+
 header {
   background: #4A148C;
   padding: 10px 0;
   transition: background-color 0.3s;
 }
 
+header.dark-mode {
+  background-color: #333; /* Fond de l'en-tête en mode sombre */
+  color: #a770eb; /* Couleur du texte en violet en mode sombre */
+}
+
 .menu {
+  font-size: 22px;
   padding: 20px;
   background: #4A148C;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.menu.dark-mode {
+  background-color: #333; /* Fond du menu en mode sombre */
 }
 
 .menu ul {
@@ -40,6 +57,10 @@ header {
   position: relative; /* Position relative pour les dropdowns */
 }
 
+.menu-icon {
+  width: 24px;
+  height: auto;
+}
 .menu a {
   font-size: 22px;
   text-transform: uppercase;
@@ -48,10 +69,13 @@ header {
   display: block;
   position: relative;
   padding: 4px 0;
-  transition: color 0.3s; /* Transition pour la couleur du texte */
+  transition: color 0.3s;
 }
 
-/* Animation des liens du menu */
+.menu.dark-mode a {
+  color: #a770eb; /* Couleur du texte du menu en violet en mode sombre */
+}
+
 .menu a::before {
   content: "";
   width: 100%;
@@ -69,7 +93,7 @@ header {
   transform: scale3d(1, 1, 1);
 }
 
-/* Couleurs des animations spécifiques à chaque section de menu */
+/* Animations spécifiques à chaque section de menu */
 .menu-1 a::before {
   background: #E91E63;
   transform-origin: 100% 50%;
@@ -98,11 +122,6 @@ header {
   transform-origin: 100% 50%;
 }
 
-.menu-icon {
-  width: 24px; /* Ajustez la largeur de l'icône */
-  height: auto; /* La hauteur sera ajustée proportionnellement */
-}
-
 .dropdown {
   display: inline-block;
   position: relative;
@@ -117,7 +136,6 @@ header {
   padding: 4px 0;
 }
 
-/* Styles du menu déroulant */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -191,30 +209,23 @@ header {
   color: #ddd; /* Couleur du texte des paragraphes ajustée pour contraste */
 }
 
-.menu-icon {
-  width: 24px; /* Ajustez la largeur de l'icône */
-  height: auto; /* La hauteur sera ajustée proportionnellement */
-}
-
 main h1 {
-  text-align: center; /* Centre le texte horizontalement */
-  color: #a770eb; /* Couleur du texte du titre principal en violet */
-  margin: 30px 0; /* Espacement au-dessus et en dessous du titre */
-  font-size: 36px; /* Taille du texte agrandie */
-  font-weight: bold; /* Met le texte en gras pour plus de visibilité */
+  text-align: center;
+  color: #a770eb;
+  margin: 30px 0;
+  font-size: 36px;
+  font-weight: bold;
 }
 
-/* Styles pour le contenu de la page */
 main {
   padding: 20px;
-  text-align: center; /* Centre le texte dans le main */
+  text-align: center;
 }
 
 body.dark-mode main {
   color: #e0e0e0; /* Couleur du texte du contenu principal pour le mode sombre */
 }
 
-/* Mode DarkMode LightMode */
 #toggle-theme {
   background: transparent;
   border: none;
@@ -227,37 +238,6 @@ body.dark-mode main {
   z-index: 1000;
 }
 
-.menu.dark-mode a {
-  color: #a770eb; /* Couleur du texte du menu en violet en mode sombre */
-}
-
-.menu.dark-mode {
-  background-color: #333; /* Fond du menu en mode sombre */
-}
-
-.menu {
-  padding: 20px;
-  text-align: center;
-  background: #4A148C;
-}
-
-body {
-  font-family: 'Open Sans Condensed', sans-serif;
-  background-color: #fff; /* Fond général clair */
-  color: #1f2123; /* Couleur du texte par défaut en mode clair */
-  transition: background-color 0.3s, color 0.3s;
-}
-
-header.dark-mode {
-  background-color: #333; /* Fond de l'en-tête en mode sombre */
-  color: #a770eb; /* Couleur du texte en violet en mode sombre */
-}
-
-body.dark-mode {
-  background-color: #1f2123; /* Fond général sombre */
-  color: #a770eb; /* Couleur du texte en violet en mode sombre */
-}
-
 /* Positionnement de la flamme sous le lien */
 .flame-container {
   position: relative;
@@ -266,27 +246,25 @@ body.dark-mode {
 
 .flame-gif {
   position: absolute;
-  align-items: left;
   left: -10px;
   transform: translateX(-50%);
-  bottom: -13px ; /* Ajuste la hauteur pour placer la flamme juste en dessous */
-  width: 150px ; /* Largeur de la flamme */
-  height: 20px; /* Hauteur de la flamme */
+  bottom: -13px;
+  width: 150px;
+  height: 20px;
 }
 
 .dropdown-content a:hover .flame-gif {
-  display: block; /* Affiche la flamme au survol */
+  display: block;
 }
 
 /* Styles pour le drapeau qui tourne */
 .flag-icon {
-  width: 30px ; /* Taille du drapeau */
+  width: 30px;
   height: auto;
-  margin-left: 5px; /* Espace entre le texte "Mon CV" et le drapeau */
-  animation: spin 2s linear infinite; /* Animation de rotation */
+  margin-left: 5px;
+  animation: spin 2s linear infinite;
 }
 
-/* Animation de rotation */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -296,11 +274,6 @@ body.dark-mode {
   }
 }
 
-/* Styles pour les petits logos */
-.petitlogo{
-  margin-top: 15%;
-}
-
 /* Particles.js */
 #particles-js {
   position: fixed;
@@ -308,13 +281,12 @@ body.dark-mode {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Place derrière le contenu */
-  pointer-events: none; /* Permet aux clics de passer à travers */
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Styles pour les écrans mobiles */
 @media screen and (max-width: 768px) {
-  /* Menu */
   .menu ul {
     padding: 10px 0;
   }
@@ -328,23 +300,21 @@ body.dark-mode {
     font-size: 18px;
   }
 
-  /* Images */
   .image-links {
     flex-direction: column;
     gap: 10px;
   }
 
   .image-link img {
-    width: 120px; /* Réduction de la taille des images */
+    width: 120px;
   }
 
-  /* Titres */
   .image-title {
     font-size: 14px;
   }
 
   main h1 {
-    font-size: 28px; /* Réduction de la taille du titre principal */
+    font-size: 28px;
   }
 
   #toggle-theme {
@@ -352,4 +322,3 @@ body.dark-mode {
     right: 10px;
   }
 }
-

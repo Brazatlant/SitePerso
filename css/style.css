@@ -29,17 +29,19 @@ header {
 header.dark-mode {
   background-color: #333; /* Fond de l'en-tête en mode sombre */
 }
-
+/* Menu */
 .menu {
   padding: 20px;
   text-align: center;
   background: #4A148C;
+  transition: background-color 0.3s;
 }
 
 .menu.dark-mode {
-  background-color: #333; /* Fond du menu en mode sombre */
+  background-color: #333;
 }
 
+/* Structure des éléments du menu */
 .menu ul {
   list-style: none;
   margin: 0;
@@ -56,18 +58,17 @@ header.dark-mode {
   font-size: 22px;
   text-transform: uppercase;
   text-decoration: none;
-  color: #fff; /* Couleur du texte des liens du menu en blanc */
+  color: #fff;
   display: block;
-  position: relative;
   padding: 4px 0;
-  transition: color 0.3s; /* Transition pour la couleur du texte */
+  transition: color 0.3s;
 }
 
 .menu.dark-mode a {
-  color: #a770eb; /* Couleur du texte du menu en violet en mode sombre */
+  color: #a770eb; /* Couleur en mode sombre */
 }
 
-/* Styles pour les animations du menu */
+/* Animation des liens du menu */
 .menu a::before {
   content: "";
   width: 100%;
@@ -82,11 +83,10 @@ header.dark-mode {
 }
 
 .menu a:hover::before {
-  
   transform: scaleX(1);
 }
 
-/* Styles pour le menu déroulant */
+/* Menu déroulant */
 .dropdown {
   display: inline-block;
   position: relative;
@@ -106,11 +106,50 @@ header.dark-mode {
   position: absolute;
   background-color: #4A148C;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   top: 100%;
   left: 0;
 }
+
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #6A1B9A;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Responsive - adaptions pour mobile */
+@media screen and (max-width: 768px) {
+  .menu {
+    padding: 15px; /* Ajuste l'espacement du menu sur mobile */
+  }
+
+  .menu li {
+    display: block; /* Menu en colonne sur mobile */
+    margin: 5px 0;
+  }
+
+  .menu a {
+    font-size: 18px; /* Taille de texte réduite sur mobile */
+  }
+
+  /* Gérer les boutons déroulants */
+  .dropdown-content {
+    position: static; /* Liste déroulante en mode mobile */
+    box-shadow: none;
+  }
+}
+
 
 .dropdown-content a {
   color: #fff;
