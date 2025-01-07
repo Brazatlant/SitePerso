@@ -1,17 +1,144 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site Perso</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="images/server-icon.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>Jeu du Juste Prix</title>
 </head>
-
 <body>
-    <h1>Page 2</h1>
-    <p><strong></strong></p>
+    <header>
+        <nav class="menu">
+            <ul></ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h1>Bienvenue dans le jeu du Juste Prix!</h1>
+            <p id="date"></p>
+            <label for="priceInput">Entrez un prix (1-100):</label>
+            <input type="number" id="priceInput" min="1" max="100" required>
+            <br><br>
 
-    <div class="button"><a href="http://127.0.0.1:5500/main.html" target="_self"><span>Main page</span></button></div><br>
+            <label for="attemptsInput">Nombre de lancés souhaités:</label>
+            <input type="number" id="attemptsInput" min="1" required>
+            <br><br>
 
+            <button id="startGameBtn">Lancer le jeu</button>
+
+            <div id="result"></div>
+        </section>
+    </main>
+
+    <script>
+        // Afficher la date et l'heure
+        const dateElement = document.getElementById('date');
+        const currentDate = new Date();
+        dateElement.textContent = `Date: ${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()} Heure: ${currentDate.getHours()}:${currentDate.getMinutes()}`;
+
+        document.getElementById('startGameBtn').addEventListener('click', function() {
+            const priceInput = parseInt(document.getElementById('priceInput').value);
+            const attemptsInput = parseInt(document.getElementById('attemptsInput').value);
+            const randomPrice = Math.floor(Math.random() * 100) + 1;
+            let attempts = 0;
+
+            let resultText = "";
+            let won = false;
+
+            while (attempts < attemptsInput) {
+                attempts++;
+                if (priceInput < randomPrice) {
+                    resultText += `<img src="img/plus.png" alt="+">`;
+                    resultText += `<p>Essai ${attempts}: C'est plus!</p>`;
+                } else if (priceInput > randomPrice) {
+                    resultText += `<img src="img/minus.png" alt="-">`;
+                    resultText += `<p>Essai ${attempts}: C'est moins!</p>`;
+                } else {
+                    won = true;
+                    resultText += `<img src="img/winner.png" alt="Gagné">`;
+                    resultText += `<p>Bravo! Vous avez trouvé le juste prix: ${randomPrice}</p>`;
+                    break;
+                }
+            }
+
+            if (!won) {
+                resultText += `<img src="img/lost.png" alt="Perdu">`;
+                resultText += `<p>Perdu! Le juste prix était: ${randomPrice}</p>`;
+            }
+
+            resultText += `<p>Vous avez effectué ${attempts} essai(s).</p>`;
+            resultText += `<p>Voulez-vous recommencer ? <button onclick="location.reload();">Oui</button> <button onclick="window.close();">Non</button></p>`;
+            document.getElementById('result').innerHTML = resultText;
+        });
+    </script>
 </body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('menu.json')
+            .then(response => response.json())
+            .then(data => {
+                const menuContainer = document.querySelector('nav.menu > ul');
+                menuContainer.innerHTML = ''; // Clear any existing content
+    
+                data.menu.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = item.class;
+    
+                    if (item.dropdown) {
+                        const dropdownContent = document.createElement('div');
+                        dropdownContent.className = 'dropdown-content';
+                        item.dropdown.forEach(subItem => {
+                            const a = document.createElement('a');
+                            a.href = subItem.link;
+                            a.innerHTML = subItem.content;
+    
+                            // Check if the item contains images
+                            if (subItem.images) {
+                                const flameContainer = document.createElement('span');
+                                flameContainer.className = 'flame-container';
+    
+                                const flameImg = document.createElement('img');
+                                flameImg.className = 'flame-gif';
+                                flameImg.src = subItem.images.flame;
+                                flameContainer.appendChild(flameImg);
+    
+                                const flagImg = document.createElement('img');
+                                flagImg.className = 'flag-icon';
+                                flagImg.src = subItem.images.flag;
+                                flameContainer.appendChild(flagImg);
+    
+                                a.appendChild(flameContainer);
+                            }
+    
+                            dropdownContent.appendChild(a);
+                        });
+    
+                        const a = document.createElement('a');
+                        a.href = item.link;
+                        a.className = 'dropbtn';
+                        a.textContent = item.content;
+    
+                        li.appendChild(a);
+                        li.appendChild(dropdownContent);
+                    } else {
+                        const a = document.createElement('a');
+                        a.href = item.link;
+                        a.innerHTML = item.content;
+                        li.appendChild(a);
+                    }
+    
+                    menuContainer.appendChild(li);
+                });
+    
+                const themeButton = document.createElement('button');
+                themeButton.id = 'toggle-theme';
+                themeButton.setAttribute('aria-label', 'Toggle dark/light mode');
+                themeButton.textContent = '🌙';
+                menuContainer.appendChild(themeButton);
+            });
+    });
+</script>

@@ -211,7 +211,6 @@ main {
 }
 
 body.dark-mode main {
-
   color: #e0e0e0; /* Couleur du texte du contenu principal pour le mode sombre */
 }
 
@@ -259,7 +258,6 @@ body.dark-mode {
   color: #a770eb; /* Couleur du texte en violet en mode sombre */
 }
 
-
 /* Positionnement de la flamme sous le lien */
 .flame-container {
   position: relative;
@@ -298,11 +296,12 @@ body.dark-mode {
   }
 }
 
-
+/* Styles pour les petits logos */
 .petitlogo{
   margin-top: 15%;
 }
 
+/* Particles.js */
 #particles-js {
   position: fixed;
   top: 0;
@@ -312,3 +311,45 @@ body.dark-mode {
   z-index: -1; /* Place derrière le contenu */
   pointer-events: none; /* Permet aux clics de passer à travers */
 }
+
+/* Styles pour les écrans mobiles */
+@media screen and (max-width: 768px) {
+  /* Menu */
+  .menu ul {
+    padding: 10px 0;
+  }
+
+  .menu li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .menu a {
+    font-size: 18px;
+  }
+
+  /* Images */
+  .image-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .image-link img {
+    width: 120px; /* Réduction de la taille des images */
+  }
+
+  /* Titres */
+  .image-title {
+    font-size: 14px;
+  }
+
+  main h1 {
+    font-size: 28px; /* Réduction de la taille du titre principal */
+  }
+
+  #toggle-theme {
+    top: 10px;
+    right: 10px;
+  }
+}
+

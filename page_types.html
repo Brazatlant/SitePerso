@@ -11,33 +11,7 @@
 <body>
     <header>
       <nav class="menu">
-        <ul>
-            <li class="menu-1">
-                <a href="index.html">
-                    <img src="img/home-icon.png" alt="Home" class="menu-icon">
-                </a>
-            </li>
-            <li class="dropdown menu-2">
-                <a href="#" class="dropbtn">Thèmes</a>
-                <div class="dropdown-content">
-                    <a href="page1.html">Phishing</a>
-                    <a href="page2.html">Page 2</a>
-                </div>
-            </li>
-            <li class="menu-4"><a href="liens.html">Liens</a></li>
-            <li class="menu-3"><a href="contact.html">Contact</a></li>
-            <li class="menu-5"><a href="lien-prof.html">Lien Prof</a></li>
-            <li class="dropdown menu-2">
-                <a href="#" class="dropbtn">TP</a>
-                <div class="dropdown-content">
-                    <a href="421.html">Jeu de 421</a>
-                    <a href="page2.html">Autre jeu</a>
-                    <a href="cv.html">Mon CV</a>
-                    <a href="tetris.html">Tetris</a>
-                </div>
-            </li>
-            <button id="toggle-theme" aria-label="Toggle dark/light mode">🌙</button>
-        </ul>
+        <ul></ul>
     </nav>
     </header>
     
@@ -45,30 +19,67 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.getElementById('toggle-theme');
-    const darkModeClass = 'dark-mode';
-
-    // Appliquer le thème en fonction de la préférence stockée
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add(darkModeClass);
-      toggleButton.textContent = '🌞';
-    } else {
-      toggleButton.textContent = '🌙';
-    }
-
-    // Fonction pour basculer le thème
-    function toggleTheme() {
-      document.body.classList.toggle(darkModeClass);
-      if (document.body.classList.contains(darkModeClass)) {
-        localStorage.setItem('theme', 'dark');
-        toggleButton.textContent = '🌞';
-      } else {
-        localStorage.setItem('theme', 'light');
-        toggleButton.textContent = '🌙';
-      }
-    }
-
-    // Événement de clic pour changer le thème
-    toggleButton.addEventListener('click', toggleTheme);
+      fetch('menu.json')
+          .then(response => response.json())
+          .then(data => {
+              const menuContainer = document.querySelector('nav.menu > ul');
+              menuContainer.innerHTML = ''; // Clear any existing content
+  
+              data.menu.forEach(item => {
+                  const li = document.createElement('li');
+                  li.className = item.class;
+  
+                  if (item.dropdown) {
+                      const dropdownContent = document.createElement('div');
+                      dropdownContent.className = 'dropdown-content';
+                      item.dropdown.forEach(subItem => {
+                          const a = document.createElement('a');
+                          a.href = subItem.link;
+                          a.innerHTML = subItem.content;
+  
+                          // Check if the item contains images
+                          if (subItem.images) {
+                              const flameContainer = document.createElement('span');
+                              flameContainer.className = 'flame-container';
+  
+                              const flameImg = document.createElement('img');
+                              flameImg.className = 'flame-gif';
+                              flameImg.src = subItem.images.flame;
+                              flameContainer.appendChild(flameImg);
+  
+                              const flagImg = document.createElement('img');
+                              flagImg.className = 'flag-icon';
+                              flagImg.src = subItem.images.flag;
+                              flameContainer.appendChild(flagImg);
+  
+                              a.appendChild(flameContainer);
+                          }
+  
+                          dropdownContent.appendChild(a);
+                      });
+  
+                      const a = document.createElement('a');
+                      a.href = item.link;
+                      a.className = 'dropbtn';
+                      a.textContent = item.content;
+  
+                      li.appendChild(a);
+                      li.appendChild(dropdownContent);
+                  } else {
+                      const a = document.createElement('a');
+                      a.href = item.link;
+                      a.innerHTML = item.content;
+                      li.appendChild(a);
+                  }
+  
+                  menuContainer.appendChild(li);
+              });
+  
+              const themeButton = document.createElement('button');
+              themeButton.id = 'toggle-theme';
+              themeButton.setAttribute('aria-label', 'Toggle dark/light mode');
+              themeButton.textContent = '🌙';
+              menuContainer.appendChild(themeButton);
+          });
   });
-</script>
+  </script>
