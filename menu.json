@@ -39,5 +39,10 @@
                 { "link": "tetris.html", "content": "Tetris" }
             ]
         }
-    ]
+    ],
+    "hamburger": {
+        "id": "hamburger",
+        "aria-label": "Toggle menu",
+        "symbol": "&#9776;"
+    }
 }

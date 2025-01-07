@@ -330,8 +330,57 @@ main {
     cursor: pointer;
   }
 
-  /* Lorsque la timeline est affichée en plein écran */
-  .twitter-timeline.fullscreen {
-    display: block; /* La timeline est affichée en plein écran */
+  /* Masquer le flux Twitter en mode mobile */
+  @media (max-width: 768px) {
+    .twitter-timeline {
+      display: none !important; /* Assurez-vous que la timeline est masquée sur mobile */
+    }
   }
+
+    /* Positionner le texte en bas de l'écran en mode mobile */
+  @media (max-width: 768px) {
+    main p {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;  /* Centre le texte */
+      padding: 10px 0;
+      background-color:linear-gradient(180deg, rgba(0,0,0,1) 35%, rgba(74, 20, 140) 100%);;  /* Ajoute un fond blanc pour le contraste */
+      margin: 0;  /* Évite les marges supplémentaires */
+    }
+  }
+
+/* Par défaut, cacher le menu sur les petits écrans */
+@media (max-width: 768px) {
+  .menu ul {
+    display: none; /* Cache le menu sur mobile */
+  }
+
+  /* Afficher le menu lorsque le bouton hamburger est cliqué */
+  .menu ul.active {
+    display: block;
+  }
+
+  /* Afficher et positionner le bouton hamburger en haut à gauche */
+  #hamburger {
+    display: block;
+    position: fixed;
+    top: 10px;  /* Ajuster la position du bouton en haut */
+    left: 10px; /* Ajuster la position du bouton à gauche */
+    z-index: 1000; /* Assure que le bouton reste au-dessus des autres éléments */
+  }
+}
+
+/* Masquer le bouton hamburger sur les grands écrans (mode PC) */
+@media (min-width: 769px) {
+  #hamburger {
+    display: none;  /* Masque le bouton hamburger sur les écrans larges */
+  }
+
+  /* Afficher le menu normalement sur PC */
+  .menu ul {
+    display: block; /* Affiche le menu sur les écrans de bureau */
+  }
+}
 }
