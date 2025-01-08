@@ -27,7 +27,7 @@
             "content": "TP",
             "dropdown": [
                 { "link": "421.html", "content": "Jeu de 421" },
-                { "link": "/scraper/rootme.html", "content":"Root Me"},
+                { "link": "rootme.html", "content":"Root Me"},
                 { "link": "page2.html", "content": "Autre jeu" },
                 {
                     "link": "cv.html",
