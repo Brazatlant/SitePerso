@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classement des Profils Root-Me</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+      border-bottom: #77b300 3px solid;
+    }
+    #scrapButton {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #77b300;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    #loading {
+      display: none;
+      width: 50px;
+      height: 50px;
+      margin: 20px auto;
+      border: 6px solid #f4f4f4;
+      border-top: 6px solid #77b300;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .profiles {
+      margin-top: 20px;
+    }
+    .profile {
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-left: #77b300 3px solid;
+    }
+    .menu {
+  padding: 20px;
+}
+
+.menu.dark-mode {
+  background-color: #333; /* Fond du menu en mode sombre */
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.menu li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.menu a {
+  font-size: 22px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff; /* Couleur du texte en mode clair */
+  display: block;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s;
+}
+
+.menu.dark-mode a {
+  color: #a770eb; /* Couleur du texte en violet en mode sombre */
+}
+
+/* Animation des liens du menu */
+.menu a::before {
+  content: "";
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  transition: 0.5s transform ease;
+  transform: scale3d(0, 1, 1);
+  transform-origin: 0 50%;
+}
+
+.menu a:hover::before {
+  transform: scale3d(1, 1, 1);
+}
+
+/* Couleurs des animations spécifiques à chaque section de menu */
+.menu-1 a::before {
+  background: #E91E63;
+}
+
+.menu-2 a::before {
+  background: #EC407A;
+}
+
+.menu-3 a::before {
+  background: #F06292;
+}
+
+.menu-4 a::before {
+  background: #EC407A;
+}
+
+.menu-5 a::before {
+  background: #E91E63;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropbtn {
+  cursor: pointer;
+  color: #fff; /* Couleur du texte du bouton en mode clair */
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="menu">
+      <ul></ul>
+    </nav>
+    <h1>Classement des Profils Root-Me</h1>
+  </header>
+  <div class="container">
+    <a id="scrapButton">Go Scrap</a>
+    <div id="loading"></div>
+    <div class="profiles" id="profiles"></div>
+  </div>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    let previousProfiles = [];
+
+    async function fetchProfiles() {
+      const response = await fetch('data.json');
+      const data = await response.json();
+      return data.profiles.sort((a, b) => parseInt(b.points) - parseInt(a.points));
+    }
+
+    function renderProfiles(profiles) {
+      const profilesContainer = document.getElementById('profiles');
+      profilesContainer.innerHTML = ''; 
+
+      profiles.forEach((profile, index) => {
+        const profileDiv = document.createElement('div');
+        profileDiv.classList.add('profile');
+        profileDiv.setAttribute('data-id', profile.pseudo);
+        profileDiv.innerHTML = `
+          <h2>${index + 1}. ${profile.pseudo}</h2>
+          <p>Classement : ${profile.classement}</p>
+          <p>Points : ${profile.points}</p>
+          <p>Challenges : ${profile.challenges}</p>
+          <p>Compromissions : ${profile.compromissions}</p>
+        `;
+        profilesContainer.appendChild(profileDiv);
+      });
+    }
+
+    function animateProfiles(newProfiles) {
+      const profilesContainer = document.getElementById('profiles');
+      const existingProfiles = Array.from(profilesContainer.children);
+
+      newProfiles.forEach((profile, index) => {
+        const existingProfile = existingProfiles.find(
+          (el) => el.getAttribute('data-id') === profile.pseudo
+        );
+
+        if (existingProfile) {
+          const oldIndex = Array.from(profilesContainer.children).indexOf(existingProfile);
+          const newIndex = index;
+
+          if (newIndex < oldIndex) {
+            existingProfile.classList.add('slide-up');
+          } else if (newIndex > oldIndex) {
+            existingProfile.classList.add('slide-down');
+          }
+
+          setTimeout(() => {
+            existingProfile.classList.remove('slide-up', 'slide-down');
+          }, 300);
+        }
+      });
+
+      setTimeout(() => renderProfiles(newProfiles), 300);
+    }
+
+    const profiles = await fetchProfiles();
+    previousProfiles = [...profiles];
+    renderProfiles(profiles);
+
+    const scrapButton = document.getElementById('scrapButton');
+    const loading = document.getElementById('loading');
+
+    scrapButton.addEventListener('click', async () => {
+      scrapButton.style.display = 'none';
+      loading.style.display = 'block';
+
+      const response = await fetch('/scrape', {
+        method: 'POST',
+      });
+
+      loading.style.display = 'none';
+      scrapButton.style.display = 'block';
+
+      if (response.ok) {
+        const updatedProfiles = await fetchProfiles();
+        animateProfiles(updatedProfiles);
+      } else {
+        alert('Erreur lors de la mise à jour des données.');
+      }
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      // Chargement du menu depuis le fichier JSON
+      fetch('menu.json')
+          .then(response => response.json())
+          .then(data => {
+              const menuContainer = document.querySelector('nav.menu > ul');
+              menuContainer.innerHTML = ''; // Clear any existing content
+      
+              data.menu.forEach(item => {
+                  const li = document.createElement('li');
+                  li.className = item.class;
+      
+                  // Vérification de la présence d'un sous-menu (dropdown)
+                  if (item.dropdown) {
+                      const dropdownContent = document.createElement('div');
+                      dropdownContent.className = 'dropdown-content';
+                      item.dropdown.forEach(subItem => {
+                          const a = document.createElement('a');
+                          a.href = subItem.link;
+                          a.innerHTML = subItem.content;
+      
+                          // Vérification si l'élément contient des images (flame, flag)
+                          if (subItem.images) {
+                              const flameContainer = document.createElement('span');
+                              flameContainer.className = 'flame-container';
+      
+                              const flameImg = document.createElement('img');
+                              flameImg.className = 'flame-gif';
+                              flameImg.src = subItem.images.flame;
+                              flameContainer.appendChild(flameImg);
+      
+                              const flagImg = document.createElement('img');
+                              flagImg.className = 'flag-icon';
+                              flagImg.src = subItem.images.flag;
+                              flameContainer.appendChild(flagImg);
+      
+                              a.appendChild(flameContainer);
+                          }
+      
+                          dropdownContent.appendChild(a);
+                      });
+      
+                      const a = document.createElement('a');
+                      a.href = item.link;
+                      a.className = 'dropbtn';
+                      a.textContent = item.content;
+      
+                      li.appendChild(a);
+                      li.appendChild(dropdownContent);
+                  } else {
+                      const a = document.createElement('a');
+                      a.href = item.link;
+                      a.innerHTML = item.content;
+                      li.appendChild(a);
+                  }
+      
+                  menuContainer.appendChild(li);
+              });
+      
+              // Ajout du bouton de changement de thème
+              const themeButton = document.createElement('button');
+              themeButton.id = 'toggle-theme';
+              themeButton.setAttribute('aria-label', 'Toggle dark/light mode');
+              themeButton.textContent = '🌙';
+              menuContainer.appendChild(themeButton);
+      
+              // Initialisation du thème (clair ou sombre)
+              if (localStorage.getItem('theme') === 'dark') {
+                  document.body.classList.add('dark-mode');
+              }
+      
+              // Changement du thème au clic sur le bouton
+              themeButton.addEventListener('click', () => {
+                  document.body.classList.toggle('dark-mode');
+                  const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+                  localStorage.setItem('theme', theme); // Sauvegarde le choix de thème
+                  themeButton.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌙'; // Changer l'icône
+              });
+          });
+  });
+  </script>    

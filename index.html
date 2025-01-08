@@ -6,26 +6,24 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- Particles.js -->
   <title>Site Perso - Cybersécurité</title>
 </head>
 
 <body>
-  <header>
-    <nav class="menu">
-      <button id="hamburger" aria-label="Toggle menu">&#9776;</button> <!-- Hamburger button -->
-      <ul></ul>
-    </nav>
-  </header>
+    <header>
+      <nav class="menu">
+          <ul></ul>
+      </nav>
+  </header> 
 
   <div id="particles-js"></div>
 
   <main>
     <p>Page dédiée au cyber</p>
     <a class="twitter-timeline" data-lang="fr" data-theme="dark" href="https://twitter.com/CNIL?ref_src=twsrc%5Etfw">Tweets by CNIL</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async src="https://platform.twitter.com/widgets.js"></script>
   </main>
 
   <footer>
@@ -34,93 +32,87 @@
 
   <script src="animation.js"></script>
 
-  <script>
-    document.getElementById("hamburger").addEventListener("click", function () {
-      this.classList.toggle("active"); // Toggle burger icon
-      const menu = document.querySelector(".menu ul");
-      menu.style.display = menu.style.display === "block" ? "none" : "block"; // Toggle menu visibility
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Chargement du menu depuis le fichier JSON
-      fetch('menu.json')
-        .then(response => response.json())
-        .then(data => {
-          const menuContainer = document.querySelector('nav.menu > ul');
-          menuContainer.innerHTML = ''; // Clear any existing content
-
-          data.menu.forEach(item => {
-            const li = document.createElement('li');
-            li.className = item.class;
-
-            // Vérification de la présence d'un sous-menu (dropdown)
-            if (item.dropdown) {
-              const dropdownContent = document.createElement('div');
-              dropdownContent.className = 'dropdown-content';
-              item.dropdown.forEach(subItem => {
-                const a = document.createElement('a');
-                a.href = subItem.link;
-                a.innerHTML = subItem.content;
-
-                // Vérification si l'élément contient des images (flame, flag)
-                if (subItem.images) {
-                  const flameContainer = document.createElement('span');
-                  flameContainer.className = 'flame-container';
-
-                  const flameImg = document.createElement('img');
-                  flameImg.className = 'flame-gif';
-                  flameImg.src = subItem.images.flame;
-                  flameContainer.appendChild(flameImg);
-
-                  const flagImg = document.createElement('img');
-                  flagImg.className = 'flag-icon';
-                  flagImg.src = subItem.images.flag;
-                  flameContainer.appendChild(flagImg);
-
-                  a.appendChild(flameContainer);
-                }
-
-                dropdownContent.appendChild(a);
-              });
-
-              const a = document.createElement('a');
-              a.href = item.link;
-              a.className = 'dropbtn';
-              a.textContent = item.content;
-
-              li.appendChild(a);
-              li.appendChild(dropdownContent);
-            } else {
-              const a = document.createElement('a');
-              a.href = item.link;
-              a.innerHTML = item.content;
-              li.appendChild(a);
-            }
-
-            menuContainer.appendChild(li);
-          });
-
-          // Ajout du bouton de changement de thème
-          const themeButton = document.createElement('button');
-          themeButton.id = 'toggle-theme';
-          themeButton.setAttribute('aria-label', 'Toggle dark/light mode');
-          themeButton.textContent = '🌙';
-          menuContainer.appendChild(themeButton);
-
-          // Initialisation du thème (clair ou sombre)
-          if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-          }
-
-          // Changement du thème au clic sur le bouton
-          themeButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme); // Sauvegarde le choix de thème
-            themeButton.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌙'; // Changer l'icône
-          });
-        });
-    });
-  </script>
 </body>
 </html>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      // Chargement du menu depuis le fichier JSON
+      fetch('menu.json')
+          .then(response => response.json())
+          .then(data => {
+              const menuContainer = document.querySelector('nav.menu > ul');
+              menuContainer.innerHTML = ''; // Clear any existing content
+      
+              data.menu.forEach(item => {
+                  const li = document.createElement('li');
+                  li.className = item.class;
+      
+                  // Vérification de la présence d'un sous-menu (dropdown)
+                  if (item.dropdown) {
+                      const dropdownContent = document.createElement('div');
+                      dropdownContent.className = 'dropdown-content';
+                      item.dropdown.forEach(subItem => {
+                          const a = document.createElement('a');
+                          a.href = subItem.link;
+                          a.innerHTML = subItem.content;
+      
+                          // Vérification si l'élément contient des images (flame, flag)
+                          if (subItem.images) {
+                              const flameContainer = document.createElement('span');
+                              flameContainer.className = 'flame-container';
+      
+                              const flameImg = document.createElement('img');
+                              flameImg.className = 'flame-gif';
+                              flameImg.src = subItem.images.flame;
+                              flameContainer.appendChild(flameImg);
+      
+                              const flagImg = document.createElement('img');
+                              flagImg.className = 'flag-icon';
+                              flagImg.src = subItem.images.flag;
+                              flameContainer.appendChild(flagImg);
+      
+                              a.appendChild(flameContainer);
+                          }
+      
+                          dropdownContent.appendChild(a);
+                      });
+      
+                      const a = document.createElement('a');
+                      a.href = item.link;
+                      a.className = 'dropbtn';
+                      a.textContent = item.content;
+      
+                      li.appendChild(a);
+                      li.appendChild(dropdownContent);
+                  } else {
+                      const a = document.createElement('a');
+                      a.href = item.link;
+                      a.innerHTML = item.content;
+                      li.appendChild(a);
+                  }
+      
+                  menuContainer.appendChild(li);
+              });
+      
+              // Ajout du bouton de changement de thème
+              const themeButton = document.createElement('button');
+              themeButton.id = 'toggle-theme';
+              themeButton.setAttribute('aria-label', 'Toggle dark/light mode');
+              themeButton.textContent = '🌙';
+              menuContainer.appendChild(themeButton);
+      
+              // Initialisation du thème (clair ou sombre)
+              if (localStorage.getItem('theme') === 'dark') {
+                  document.body.classList.add('dark-mode');
+              }
+      
+              // Changement du thème au clic sur le bouton
+              themeButton.addEventListener('click', () => {
+                  document.body.classList.toggle('dark-mode');
+                  const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+                  localStorage.setItem('theme', theme); // Sauvegarde le choix de thème
+                  themeButton.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌙'; // Changer l'icône
+              });
+          });
+  });
+  </script>    
