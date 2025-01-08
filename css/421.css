@@ -225,3 +225,11 @@ th {
   right: 0;
 }
 
+
+/* Styles pour le drapeau qui tourne */
+.flag-icon {
+  width: 30px ; /* Taille du drapeau */
+  height: auto;
+  margin-left: 5px; /* Espace entre le texte "Mon CV" et le drapeau */
+  animation: spin 2s linear infinite; /* Animation de rotation */
+}
