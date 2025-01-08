@@ -26,7 +26,7 @@ async function scrapeProfiles() {
 
   const delay = (time) => new Promise(resolve => setTimeout(resolve, time));
   const profiles = [];
-  const maxRequestsPerSession = 4; // Limiter à 5 requêtes par session
+  const maxRequestsPerSession = 4;
 
   try {
     console.log("Lancement du navigateur...");
@@ -40,9 +40,7 @@ async function scrapeProfiles() {
         try {
           console.log(`Accès à l'URL : ${profileUrl}`);
           await page.goto(profileUrl, { waitUntil: "domcontentloaded" });
-
-          // Utilisation de setTimeout pour attendre
-          await delay(2000); // Attendre 2 secondes entre les requêtes
+          await delay(2000);
 
           const data = await page.evaluate(() => {
             const pseudo = document.querySelector("h1[itemprop='givenName'] span.txt_6forum")?.textContent.trim() || "Inconnu";
@@ -62,7 +60,7 @@ async function scrapeProfiles() {
       }
 
       console.log(`Session terminée, attente avant la prochaine session...`);
-      await delay(5000); // Attendre 5 secondes entre les sessions
+      await delay(5000);
     }
 
     console.log("Profils récupérés : ", profiles);
